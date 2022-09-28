@@ -1,0 +1,263 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\AXITests\\AXITests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\AXITests\\AXITests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\AXITests\\AXITests.csproj",
+        "projectName": "AXITests",
+        "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\AXITests\\AXITests.csproj",
+        "packagesPath": "C:\\Users\\miesg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\AXITests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\miesg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\BusnLogic.csproj": {
+                "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\BusnLogic.csproj"
+              },
+              "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\DalMSSQL.csproj": {
+                "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\DalMSSQL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MSTest.TestAdapter": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\BusnLogic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\BusnLogic.csproj",
+        "projectName": "BusnLogic",
+        "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\BusnLogic.csproj",
+        "packagesPath": "C:\\Users\\miesg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\BusnLogic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\miesg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj": {
+                "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\DalMSSQL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\DalMSSQL.csproj",
+        "projectName": "DalMSSQL",
+        "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\DalMSSQL.csproj",
+        "packagesPath": "C:\\Users\\miesg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\DalMSSQL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\miesg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj": {
+                "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj",
+        "projectName": "InterfaceLib",
+        "projectPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\InterfaceLib.csproj",
+        "packagesPath": "C:\\Users\\miesg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\miesg\\Documents\\Gitrepo\\AxiProgram\\Backend\\InterfaceLib\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\miesg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

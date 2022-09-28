@@ -1,0 +1,15 @@
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\bin\Debug\net6.0\DalMSSQL.deps.json
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\bin\Debug\net6.0\DalMSSQL.dll
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\bin\Debug\net6.0\DalMSSQL.pdb
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\bin\Debug\net6.0\InterfaceLib.dll
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\bin\Debug\net6.0\InterfaceLib.pdb
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.csproj.AssemblyReference.cache
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.AssemblyInfoInputs.cache
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.AssemblyInfo.cs
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.csproj.CoreCompileInputs.cache
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.csproj.CopyComplete
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.dll
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\refint\DalMSSQL.dll
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\DalMSSQL.pdb
+C:\Users\miesg\Documents\Gitrepo\AxiProgram\Backend\DalMSSQL\obj\Debug\net6.0\ref\DalMSSQL.dll
