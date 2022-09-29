@@ -1,12 +1,15 @@
 import React from "react";
 import Table from './Components/Table'
 import './Products.css';
+import  Container from 'react-bootstrap/Container';
 
 function Products(){
 return(
-    <div className="table">
-    <Table/>
-    </div>
+    <Container>
+        <div className="table">
+        <Table/>
+        </div>
+    </Container>
 )
 }
 

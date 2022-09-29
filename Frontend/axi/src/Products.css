@@ -4,4 +4,6 @@
     margin: 5%;
     margin-left: 35%;
     margin-right: 25%;
+    overflow-y: scroll;
+    height: 500px;
 }
