@@ -11,8 +11,7 @@ function Home(){
             </div>
             <div>
                 <GridButton />
-            </div>
-            <h1>AXI</h1>    
+            </div>   
         </div>
     );
 }

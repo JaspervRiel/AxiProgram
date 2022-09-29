@@ -1,15 +1,20 @@
 .grid-container {
     display: grid;
-    grid-template-columns: auto auto auto;
-    background-color: #2196F3;
+    grid-template-columns: 33% 33% 33%;
     padding: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 .grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color:#945cfb;
+    color: rgba(255, 255, 255, 0.8) !important;
     border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
+    padding: 50px;
     font-size: 30px;
     text-align: center;
+}
+.grid-container :hover {
+    background-color: #6806f9;      
 }
 
 a{
