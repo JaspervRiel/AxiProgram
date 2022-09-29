@@ -13,7 +13,6 @@ namespace DalMSSQL
         {
             connectionstring = cs;
             connection = new Database(connectionstring);
-            
         }
 
         //GetAll
@@ -54,15 +53,46 @@ namespace DalMSSQL
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            SqlCommand command;
+            string sql = "DELETE FROM Groepen WHERE ID = @ID";
+
+            command = new SqlCommand(sql, connection);
+
+            command.Parameters.AddWithValue("@ID", id);
+            connection.Close();
+            command.ExecuteNonQuery();
         }
         public void Update(ProductDTO product)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            SqlCommand command;
+            string sql = "Update Product SET " +
+                "Name = @Name," +
+                "Location = @Location," +
+                "Stock = @Stock," +
+                "ProductGroup = @ProductGroup," +
+                "BranchID = @BranchID)";
+
+            command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@Naam", product.Name);
+            command.Parameters.AddWithValue("@Location", product.Location);
+            command.Parameters.AddWithValue("@Stock", product.Stock);
+            command.Parameters.AddWithValue("@ProductGroup", product.ProductGroup);
+            command.Parameters.AddWithValue("@BranchID", product.BranchID);
+            command.ExecuteNonQuery();
         }
         public ProductDTO GetProductById(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            string sql = "SELECT * FROM Product WHERE ID = '" + id + "'";
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            return new ProductDTO(reader.GetInt32("ID"), reader.GetString("Name"), reader.GetString("Location"), reader.GetInt32("Stock"), reader.GetInt32("ProductGroup"), reader.GetInt32("BranchID"));
         }
     }
 }

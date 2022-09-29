@@ -24,17 +24,9 @@ namespace DalMSSQL
         {
             connect = cs;
         }
-
         public Database()
         {
             connectiestring = "Server=mssqlstud.fhict.local;Database=dbi485146_AXI;User Id=dbi485146_AXI;Password=Welkom01;";
-        }
-        public void databaseconnection(string sql)
-        {
-            cnn = new SqlConnection(connectiestring);
-            cnn.Close();
-            cnn.Open();
-            command = new SqlCommand(sql, cnn);
         }
     }
 }
