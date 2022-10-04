@@ -4,10 +4,13 @@
     padding: 10px;
     column-gap: 10px;
     row-gap: 10px;
+    height: 500px;
+    text-align: center;
+    font-weight: bold;
 }
 .grid-item {
     background-color:#945cfb;
-    color: rgba(255, 255, 255, 0.8) !important;
+    color: rgba(255, 255, 255) !important;
     border: 1px solid rgba(0, 0, 0, 0.8);
     padding: 50px;
     font-size: 30px;
@@ -20,4 +23,13 @@
 a{
     color: black !important;
     text-decoration: none !important;
+}
+
+.startIcon{
+    font-size: 50px;
+    background-color:#945cfb;
+    color: rgba(255, 255, 255) !important;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    text-align: center;
 }
