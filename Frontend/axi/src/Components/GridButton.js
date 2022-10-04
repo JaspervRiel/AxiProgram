@@ -12,8 +12,7 @@ function GridButton() {
     return (
         <div class="grid-container">
             
-            <Button
-                href="/Products" 
+            <Button href="/Products" 
                 class="grid-item"
                 type="submit"
                 color="secondary"
