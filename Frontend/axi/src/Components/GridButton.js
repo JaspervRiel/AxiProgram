@@ -1,12 +1,16 @@
 import './GridButton.css';
 import Button from '@mui/material/Button';
-import BatteryStdIcon from '@mui/icons-material/BatteryStd';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import TaskIcon from '@mui/icons-material/Task';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import PlaceIcon from '@mui/icons-material/Place';
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
 
 function GridButton() {
     return (
-        
         <div class="grid-container">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
             
             <Button
                 href="/Products" 
@@ -14,22 +18,57 @@ function GridButton() {
                 type="submit"
                 color="secondary"
                 variant="contained"
-                startIcon={<BatteryStdIcon/>}
-                > 
-            Producten </Button>
+                startIcon={<InventoryIcon/>}
+                > Producten
+            </Button>
 
-            <a href="/Orders" class="grid-item">Orders</a>
-            <a href="/Shipment" class="grid-item">Shipment</a>
-            <a href="/About" class="grid-item">4</a>
-            <a href="/About" class="grid-item">5</a>
-            <a href="/About" class="grid-item">6</a>
-            <a href="/About" class="grid-item">7</a>
-            <a href="/About" class="grid-item">8</a>
-            <a href="/About" class="grid-item">9</a>
-            <a href="/About" class="grid-item">10</a>
-            <a href="/About" class="grid-item">11</a>
-            <a href="/About" class="grid-item">12</a>
-            
+            <Button
+                href="/Products" 
+                class="grid-item"
+                type="submit"
+                color="secondary"
+                variant="contained"
+                startIcon={<TaskIcon/>}
+                > Orders
+            </Button>
+
+            <Button
+                href="/Products" 
+                class="grid-item"
+                type="submit"
+                color="secondary"
+                variant="contained"
+                startIcon={<LocalShippingIcon/>}
+                > Levering
+            </Button>
+
+            <Button
+                href="/Products" 
+                class="grid-item"
+                type="submit"
+                color="secondary"
+                variant="contained"
+                startIcon={<PlaceIcon/>}
+                > Locaties
+            </Button>
+
+            <Button
+                href="/" 
+                class="grid-item"
+                type="submit"
+                color="secondary"
+                variant="contained"
+                > 
+            </Button>
+
+            <Button
+                href="/" 
+                class="grid-item"
+                type="submit"
+                color="secondary"
+                variant="contained"
+                > 
+            </Button>
         </div>
   );
 }
