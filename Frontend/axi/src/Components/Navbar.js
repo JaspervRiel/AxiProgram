@@ -20,7 +20,7 @@ function ColorSchemesExample() {
               />{' '}
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="Producten" > Producten</Nav.Link>            
+            <Nav.Link href="Products">Producten</Nav.Link>            
             <Nav.Link href="Orders">Orders</Nav.Link>
             <Nav.Link href="Levering">Levering</Nav.Link>
             <Nav.Link href="Locaties">Locaties</Nav.Link>

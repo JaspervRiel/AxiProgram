@@ -22,7 +22,7 @@ function GridButton() {
             </Button>
 
             <Button
-                href="/Products" 
+                href="/Orders" 
                 class="grid-item"
                 type="submit"
                 color="secondary"
@@ -32,7 +32,7 @@ function GridButton() {
             </Button>
 
             <Button
-                href="/Products" 
+                href="/Levering" 
                 class="grid-item"
                 type="submit"
                 color="secondary"
@@ -42,7 +42,7 @@ function GridButton() {
             </Button>
 
             <Button
-                href="/Products" 
+                href="/Locaties" 
                 class="grid-item"
                 type="submit"
                 color="secondary"
