@@ -1,0 +1,30 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    padding: 10px;
+    column-gap: 10px;
+    row-gap: 10px;
+    height: 500px;
+    text-align: center;
+    font-weight: bold;
+}
+.grid-item {
+    background-color:#945cfb;
+    color: rgba(255, 255, 255) !important;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+.grid-container :hover {
+    background-color: #6806f9;      
+}
+
+a{
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.css-1d6wzja-MuiButton-startIcon>*:nth-of-type(1){
+    font-size: 100px !important;
+}
