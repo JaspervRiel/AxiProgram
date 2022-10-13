@@ -1,4 +1,6 @@
-﻿using InterfaceLib;
+﻿using BusnLogic;
+using DalMSSQL;
+using InterfaceLib;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,16 +13,31 @@ namespace Axi.Controllers
     [EnableCors]
     public class ProductController : ControllerBase
     {
+        private ProductContainer pc;
+        private readonly IConfiguration configuration;
+
+        public ProductController(IConfiguration ic)
+        {
+            configuration = ic;
+            pc = new(new ProductMSSQL(configuration["db:ConnectionString"]));
+        }
+
         [HttpGet]
         [Route("api/[controller]")]
         public string JsonConverter()
         {
-            List<ProductDTO> products = new();
-            products.Add(new ProductDTO(1, "Schroef", "A1", 34, 1, 5));
-            products.Add(new ProductDTO(2, "Schroef", "A1", 34, 1, 5));
-            products.Add(new ProductDTO(3, "Schroef", "A1", 34, 1, 5));
+            List<Product> products = pc.Getproducts();
+
             var json = JsonSerializer.Serialize(products);
             return json;
+        }
+
+        [HttpPost]
+        [Route("api/[controller]")]
+        public Product SendUserInformation()
+        {
+
+            return;
         }
     }
 }
