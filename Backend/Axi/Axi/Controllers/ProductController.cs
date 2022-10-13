@@ -20,6 +20,16 @@ namespace Axi.Controllers
             pc = new(new ProductMSSQL(configuration["db:ConnectionString"]));
         }
 
+        [HttpGet]
+        [Route("api/[controller]")]
+        public string JsonConverter()
+        {
+            List<Product> products = pc.Getproducts();
+
+            var json = JsonSerializer.Serialize(products);
+            return json;
+        }
+
         [HttpPost]
         [Route("api/[controller]")]
         public IActionResult CreateProduct(Product product)
@@ -28,7 +38,5 @@ namespace Axi.Controllers
 
             return null;
         }
-
-
     }
 }
