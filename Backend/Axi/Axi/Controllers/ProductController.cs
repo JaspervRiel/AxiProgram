@@ -1,5 +1,6 @@
 ﻿using BusnLogic;
 using DalMSSQL;
+using System;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
@@ -34,9 +35,15 @@ namespace Axi.Controllers
         [Route("api/[controller]")]
         public IActionResult CreateProduct(Product product)
         {
-            pc.Create(product);
-
-            return null;
+            try
+            {
+                pc.Create(product);
+                return Ok(product);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
         }
     }
 }
