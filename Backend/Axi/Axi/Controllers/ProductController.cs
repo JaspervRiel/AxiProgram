@@ -1,8 +1,6 @@
 ﻿using BusnLogic;
 using DalMSSQL;
-using InterfaceLib;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -22,22 +20,15 @@ namespace Axi.Controllers
             pc = new(new ProductMSSQL(configuration["db:ConnectionString"]));
         }
 
-        [HttpGet]
-        [Route("api/[controller]")]
-        public string JsonConverter()
-        {
-            List<Product> products = pc.Getproducts();
-
-            var json = JsonSerializer.Serialize(products);
-            return json;
-        }
-
         [HttpPost]
         [Route("api/[controller]")]
-        public Product SendUserInformation()
+        public IActionResult CreateProduct(Product product)
         {
+            pc.Create(product);
 
-            return;
+            return null;
         }
+
+
     }
 }
