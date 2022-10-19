@@ -1,15 +1,16 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
+import Table from './Components/Table'
+import './Products.css';
+import  Container from 'react-bootstrap/Container';
 
-function Products (){
-    return(
-        <div>
-            <div>
-                <Navbar />
-            </div>
-            <h1>Producten</h1>    
+function Products(){
+return(
+    <Container>
+        <div className="table">
+        <Table/>
         </div>
-    );
+    </Container>
+)
 }
 
 export default Products;
