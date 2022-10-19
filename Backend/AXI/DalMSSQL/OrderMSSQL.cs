@@ -106,11 +106,11 @@ namespace DalMSSQL
             connection.Open();
             List<ProductDTO> lijst = new List<ProductDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT ProductID FROM ProductOrder WHERE OrderID = '" + id + "'", connectionstring);
+            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE ProductID	= '" + id + "'", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new ProductDTO());
+                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["Stock"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"])));
             }
             connection.Close();
             return lijst;

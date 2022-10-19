@@ -34,17 +34,11 @@ namespace BusnLogic
 
         }
 
-        // Wordt gefixt wannneer we het nodig hebben
-        /*public OrderDTO GetDTO()
+        public OrderDTO GetDTO()
         {
-            List<OrderDTO> dtos = new();
-            foreach(Product tempproduct in Products)
-            {
-                dtos.Add(new ProductDTO(tempproduct));
-            }
-            OrderDTO dto = new OrderDTO(Id, OrderDate, CompletedDate, Products);
+            OrderDTO dto = new OrderDTO(Id, OrderDate, CompletedDate);
             return dto;
-        }*/
+        }
 
         public override string? ToString()
         {
