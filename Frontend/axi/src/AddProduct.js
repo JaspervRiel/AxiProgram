@@ -1,10 +1,14 @@
 import React from "react";
+import './AddProduct.css';
+import Navbar from "./Components/Navbar";
 import FRMAddProduct from "./Components/FRMAddProduct";
+
 
 function AddProduct(){
     return(
-        <div>
-            <h1>AXI</h1>
+        <div className="AddProduct">
+            <Navbar />
+            <h1></h1>
             <FRMAddProduct />    
         </div>
     );

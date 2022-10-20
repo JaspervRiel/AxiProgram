@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import './FRMAddProduct.css';
 
 const FRMAddProduct = () => {
-  const paperStyle={padding: '50px 20px', width:400, margin:"20px auto"}
+  const paperStyle={padding: '50px 20px', width:450, margin:"20px auto"}
   const[name, setName]=useState('');
   const[location, setLocation]=useState('');
   const[stock, setStock]=useState('');
@@ -26,9 +27,11 @@ const FRMAddProduct = () => {
   }
 
   return (
-    <container> 
+    <container>
       <Paper elevation={3} style={paperStyle}>
-        <h1> Maak een nieuw product</h1>
+      <div className='AddProduct'>   
+        <h1><b> Maak een nieuw product</b></h1>
+      </div>
     <Box
       component="form"
       sx={{
@@ -57,7 +60,9 @@ const FRMAddProduct = () => {
       value={branchID}
       onChange={(e)=>setBranchID(e.target.value)}
       />
-    <Button variant="contained" onClick={handleClick}>Sla gegevens op</Button>
+    <Button 
+      class="AddButton" variant="contained" onClick={handleClick}>Sla gegevens op
+    </Button>
     </Box>
     </Paper>
     </container>

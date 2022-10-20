@@ -1,0 +1,55 @@
+.css-3su884-MuiPaper-root {
+    background-color:#945cfb !important;
+}
+
+.AddProduct h1{
+    font-size: 35px;
+    text-align: center;
+    background-color: transparent !important;
+    color: #FFFFFF;
+}
+
+.AddProduct{
+    background-color: transparent !important;
+    color: #FFFFFF;
+}
+
+.AddButton{
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 17px;
+    cursor: pointer;
+    text-align: center;
+    outline: none;
+    background-color: #FFFFFF;
+    color: #945cfb !important;
+    border: none;
+    border-radius: 5px;
+}
+.AddButton:hover {
+    color: #FFFFFF !important; 
+    background-color: #6806f9; 
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+}
+
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root{
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+}
+
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root{
+    color: #FFFFFF !important;
+    background-color: transparent !important;
+}
+
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before{
+    border-bottom: 1px solid #FFFFFF !important;
+}  
+
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root::after{
+    border-bottom: 2px solid #ffffff !important;
+} 
