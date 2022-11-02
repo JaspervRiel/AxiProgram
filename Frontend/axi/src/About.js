@@ -1,10 +1,15 @@
-import React, { useState } from "react";
-    function About (){
+import React, {useState } from "react";  
+function About (){
+const [producten, setProducten] = useState([])
+fetch('https://localhost:7157/api/Product').then(response => response.json())
+.then(json => setProducten(json));
+
+
     return(
+
         <div>
-            <h1>hey</h1>
-            {producten.map(item =>{
-                return <pre>{JSON.stringify(item)}</pre>
+            {producten.map(item => {
+                return <h1>{JSON.stringify(item.Name)}</h1>
             })}
         </div>
     );
