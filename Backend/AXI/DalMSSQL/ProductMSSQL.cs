@@ -56,7 +56,7 @@ namespace DalMSSQL
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "DELETE FROM Groepen WHERE ID = @ID";
+            string sql = "DELETE FROM Product WHERE ID = @ID";
 
             command = new SqlCommand(sql, connection);
 
