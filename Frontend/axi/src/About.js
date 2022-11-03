@@ -1,19 +1,16 @@
-/*import React from "react";
-async function GetFetch(){
-    let resp = await fetch('https://localhost:7157/api/Product')
-    let respJson = await resp.json()
-    const list = respJson
-    console.log(list)
-    return list
-}*/
+import React, {useState } from "react";  
+function About (){
+const [producten, setProducten] = useState([])
+fetch('https://localhost:7157/api/Product').then(response => response.json())
+.then(json => setProducten(json));
 
-function About (){    
-    fetch('https://localhost:7157/api/Product')
-        .then(response=>response.json())
-        .then(data=>console.log(data));
+
     return(
+
         <div>
-            <h1>hey</h1>
+            {producten.map(item => {
+                return <h1>{JSON.stringify(item.Name)}</h1>
+            })}
         </div>
     );
 }
