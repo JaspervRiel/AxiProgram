@@ -28,11 +28,11 @@ namespace DalMSSQL
             connection.Open();
             List<OrderDTO> lijst = new List<OrderDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT * from Order", connectionstring);
+            SqlDataAdapter da = new("SELECT * from [Order]", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToDateTime(dr["OrderDate"]), Convert.ToDateTime(dr["CompletedDate"])));
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
             }
             connection.Close();
             return lijst;
@@ -97,7 +97,7 @@ namespace DalMSSQL
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
             connection.Close();
-            return new OrderDTO(reader.GetInt32("ID"), reader.GetDateTime("OrderDate"), reader.GetDateTime("CompletedDate"));
+            return new OrderDTO(reader.GetInt32("ID"), reader.GetString("OrderDate"), reader.GetString("CompletedDate"));
         }
 
         public List<ProductDTO> GetProductsFromOrder(int id)

@@ -11,11 +11,11 @@ namespace BusnLogic
     public class Order
     {
         private int Id { get; set; }
-        private DateTime OrderDate { get; set; }
-        private DateTime? CompletedDate { get; set; }
+        private string OrderDate { get; set; }
+        private string CompletedDate { get; set; }
         private List<Product> Products { get; set; } = new List<Product>();
 
-        public Order(int id, DateTime orderDate, DateTime completedDate)
+        public Order(int id, string orderDate, string completedDate)
         {
             Id = id;
             OrderDate = orderDate;
@@ -40,9 +40,6 @@ namespace BusnLogic
             return dto;
         }
 
-        public override string? ToString()
-        {
-            return $"Id: {Id} OrderDate: {OrderDate}";
-        }
+
     }
 }
