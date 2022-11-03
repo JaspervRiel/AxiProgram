@@ -1,0 +1,13 @@
+.left{
+    float: left;
+    margin-left: 10px;
+    background-color: aqua;
+}
+.right{
+    float: right;
+    margin-right: 10px;
+    background-color: brown;
+}
+.container{
+    background-color: purple;
+}
