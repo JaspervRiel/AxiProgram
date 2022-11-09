@@ -45,5 +45,20 @@ namespace Axi.Controllers
                 return Unauthorized();
             }
         }
+
+        [HttpDelete]
+        [Route("api/[controller]")]
+        public IActionResult DeleteProduct(int ID)
+        {
+            try
+            {
+                pc.Delete(ID);
+                return Ok(ID);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+        }
     }
 }
