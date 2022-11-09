@@ -9,19 +9,19 @@
     font-weight: bold;
 }
 .grid-item {
-    background-color:#945cfb;
-    color: rgba(255, 255, 255) !important;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color:#7B42FA;
+    color: #FFFFFF !important;
+    border: 1px solid #242020;
     padding: 50px;
     font-size: 20px;
     text-align: center;
 }
 .grid-container :hover {
-    background-color: #6806f9;      
+    background-color: #5c3cd4;      
 }
 
 a{
-    color: black !important;
+    color: #242020 !important;
     text-decoration: none !important;
 }
 

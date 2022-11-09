@@ -10,10 +10,9 @@ function ColorSchemesExample() {
       <Navbar variant="white" className="square border-bottom border-5">
         <Container>
           <Navbar.Brand href="/">
-            
             <img
                 alt=""
-                src="https://www.partnersfontysict.nl/site/assets/files/1074/axi-logo.-logo_medium.jpg"
+                src="https://www.axi.nl/themes/custom/novsubtheme/img/logos/logo-axi-white.svg"
                 width="77"
                 height="34"
                 className="d-inline-block align-top"

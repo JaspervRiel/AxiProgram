@@ -1,5 +1,5 @@
 .css-3su884-MuiPaper-root {
-    background-color:#945cfb !important;
+    background-color:#7B42FA !important;
 }
 
 .AddProduct h1{
@@ -22,13 +22,13 @@
     text-align: center;
     outline: none;
     background-color: #FFFFFF;
-    color: #945cfb !important;
+    color: #7B42FA !important;
     border: none;
     border-radius: 5px;
 }
 .AddButton:hover {
     color: #FFFFFF !important; 
-    background-color: #6806f9; 
+    background-color: #5c3cd4; 
 }
 
 .css-1x51dt5-MuiInputBase-input-MuiInput-input{
