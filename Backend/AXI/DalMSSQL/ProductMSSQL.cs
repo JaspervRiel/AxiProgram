@@ -50,6 +50,7 @@ namespace DalMSSQL
             command.Parameters.AddWithValue("@ProductGroup", product.ProductGroup);
             command.Parameters.AddWithValue("@BranchID", product.BranchID);
             command.ExecuteNonQuery();
+            connection.Close();
         }
         public void Delete(int id)
         {
@@ -61,8 +62,8 @@ namespace DalMSSQL
             command = new SqlCommand(sql, connection);
 
             command.Parameters.AddWithValue("@ID", id);
-            connection.Close();
             command.ExecuteNonQuery();
+            connection.Close();
         }
         public void Update(ProductDTO product)
         {
@@ -83,6 +84,7 @@ namespace DalMSSQL
             command.Parameters.AddWithValue("@ProductGroup", product.ProductGroup);
             command.Parameters.AddWithValue("@BranchID", product.BranchID);
             command.ExecuteNonQuery();
+            connection.Close ();
         }
         public ProductDTO GetProductById(int id)
         {
@@ -92,6 +94,7 @@ namespace DalMSSQL
             SqlCommand cmd = new SqlCommand(sql, connection);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
+            connection.Close();
             return new ProductDTO(reader.GetInt32("ID"), reader.GetString("Name"), reader.GetString("Location"), reader.GetInt32("Stock"), reader.GetInt32("ProductGroup"), reader.GetInt32("BranchID"));
         }
     }
