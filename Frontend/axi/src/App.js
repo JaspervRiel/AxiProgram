@@ -18,11 +18,11 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/About" element={<About/>} />
           <Route path='/Products' element={<Products/>}/>
-          <Route path ='/AddProduct' element={<AddProduct/>}/>
-          <Route path ='/EditProduct' element={<EditProduct/>}/>
-          <Route  path="/Orders" element={<Orders/>} />
-          <Route  path="/Levering" element={<Levering/>} />
-          <Route  path="/Locaties" element={<Locaties/>} />
+          <Route path='/AddProduct' element={<AddProduct/>}/>
+          <Route path='/EditProduct' element={<EditProduct/>}/>
+          <Route path="/Orders" element={<Orders/>} />
+          <Route path="/Levering" element={<Levering/>} />
+          <Route path="/Locaties" element={<Locaties/>} />
       </Routes>
       </BrowserRouter>
     </div>
