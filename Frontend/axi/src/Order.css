@@ -4,6 +4,8 @@
 .right {
   padding: 20px;
   width: 50%;
+  height: 94vh;
+  text-align: center;
   border: solid;
 }
 
@@ -14,11 +16,4 @@
 }
 .container {
     display: flex;
-    height: 100%;
-  }
-
- 
-
-  .button{
-    flex-direction: column;
   }

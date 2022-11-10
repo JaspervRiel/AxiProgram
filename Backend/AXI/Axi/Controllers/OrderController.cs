@@ -4,6 +4,7 @@ using System;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using InterfaceLib.DTO;
 
 namespace Axi.Controllers
 {
@@ -25,12 +26,7 @@ namespace Axi.Controllers
         [Route("api/[controller]")]
         public string JsonConverter()
         {
-            //List<Order> orders = oc.GetOrders();
-
-            List<Order> orders = new();
-            orders.Add(new Order(1, "Schroef", "A1"));
-            orders.Add(new Order(2, "Schroef", "A1"));
-            orders.Add(new Order(3, "Schroef", "A1"));
+            List<Order> orders = oc.GetOrders();
 
             var json = JsonSerializer.Serialize(orders);
             return json;

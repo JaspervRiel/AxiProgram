@@ -10,10 +10,10 @@ namespace BusnLogic
 {
     public class Order
     {
-        private int Id { get; set; }
-        private string OrderDate { get; set; }
-        private string CompletedDate { get; set; }
-        private List<Product> Products { get; set; } = new List<Product>();
+        public int Id { get; set; }
+        public string OrderDate { get; set; }
+        public string CompletedDate { get; set; }
+        public List<Product> Products { get; set; } = new List<Product>();
 
         public Order(int id, string orderDate, string completedDate)
         {
