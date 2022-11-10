@@ -1,6 +1,7 @@
 import './Order.css';
 import React from 'react';
 import {useState} from "react";
+import { Button } from '@mui/material';
 
 function Order() {
 
@@ -15,25 +16,33 @@ function Order() {
 <div class="container">
 
   <div class="left">
-    <div class="content">
-    <table bgcolor="black">
+  <div class="content"><Button variant="outlined">Actieve Orders</Button><Button variant="outlined">Oude Orders</Button></div>
+
+    <table bgcolor="black" class="content">
             <tr bgcolor="grey">
-                <th>ID</th>
                 <th>OrderDate</th>
                 <th>CompletedDate</th>
             </tr>
-            {orders.map(item => {
+             {orders.map(item => {
                 return <tr bgcolor="lightgrey" align="center">
-                    <td>{JSON.stringify(item.Id)}</td> 
                     <td>{JSON.stringify(item.OrderDate)}</td> 
                     <td>{JSON.stringify(item.CompletedDate)}</td> 
                         </tr>
-                        })}
+                        })} 
     </table>
-    </div>
   </div>
   <div class="right">
-    <div class="content"> sadoi sao</div>
+  <table bgcolor="black" class="content">
+            <tr bgcolor="grey">
+                <th>ArtikelNaam</th>
+                <th>Locatie</th>
+                <th>Aantal</th>
+            </tr>
+    </table>
+    <div class="content"><Button variant="outlined" color="success">Compleet</Button>
+    <Button variant="outlined" color="error">Niet Compleet</Button>
+    </div>
+
   </div>
 </div>
 
