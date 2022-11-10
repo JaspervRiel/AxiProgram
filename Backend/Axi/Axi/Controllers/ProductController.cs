@@ -60,5 +60,20 @@ namespace Axi.Controllers
                 return Unauthorized();
             }
         }
+
+        [HttpPatch]
+        [Route("api/[controller]")]
+        public IActionResult UpdateProduct(Product product)
+        {
+            try
+            {
+                pc.Update(product);
+                return Ok(product);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+        }
     }
 }

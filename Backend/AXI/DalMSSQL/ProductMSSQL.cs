@@ -75,10 +75,10 @@ namespace DalMSSQL
                 "Location = @Location," +
                 "Stock = @Stock," +
                 "ProductGroup = @ProductGroup," +
-                "BranchID = @BranchID)";
+                "BranchID = @BranchID WHERE ID = '" + product.Id + "'";
 
             command = new SqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@Naam", product.Name);
+            command.Parameters.AddWithValue("@Name", product.Name);
             command.Parameters.AddWithValue("@Location", product.Location);
             command.Parameters.AddWithValue("@Stock", product.Stock);
             command.Parameters.AddWithValue("@ProductGroup", product.ProductGroup);

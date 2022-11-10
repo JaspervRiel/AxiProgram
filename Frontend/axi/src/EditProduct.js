@@ -10,32 +10,33 @@ import './Components/FRMAddProduct.css';
  function ComponentB() {
     const uselocation = useLocation();
 
-    const paperStyle={padding: '50px 20px', width:450, margin:"20px auto"}
+    const paperStyle={padding: '50px 20px', width:600, margin:"20px auto"}
+    const id = uselocation.state.Id;
     const[name, setName]=useState('');
     const[location, setLocation]=useState('');
     const[stock, setStock]=useState('');
     const[productgroup, setProductGroup]=useState('')
     const[branchID, setBranchID]=useState('');
 
-  const handleClick=(e)=>{
+  const Update=(e)=>{
     e.preventDefault()
-    const product={name, location, stock, productgroup, branchID}
+    const product={id, name, location, stock, productgroup, branchID}
     console.log(product)
     fetch('https://localhost:7157/api/Product',{
-      method:"UPDATE",
+      method:"PATCH",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(product)
-    }).then(()=>{
-      console.log("Product updated")
     })
-  }
+    .then(res => res.text()) // or res.json()
+    .then(res => console.log(res))
+}
         return (
         // <div>{uselocation.state.Id}</div>
             <container>
             <Navbar />
               <Paper elevation={3} style={paperStyle}>
               <div className='AddProduct'>   
-                <h1><b> Maak een nieuw product</b></h1>
+                <h1><b> Verander de gegevens van het gekozen product: {uselocation.state.name}</b></h1>
               </div>
             <Box
               component="form"
@@ -49,7 +50,7 @@ import './Components/FRMAddProduct.css';
               value={name}
               onChange={(e)=>setName(e.target.value)}
               />
-              <TextField id="standard-basic" label="Locatie" variant="standard" defaultValue="Default Value" fullWidth 
+              <TextField id="standard-basic" label="Locatie" variant="standard" fullWidth 
               value={location}
               onChange={(e)=>setLocation(e.target.value)}
               />
@@ -61,20 +62,13 @@ import './Components/FRMAddProduct.css';
               value={productgroup}
               onChange={(e)=>setProductGroup(e.target.value)}
               />
-              <TextField id="standard-basic" label="VestigingsID" variant="standard" defaultValue="Default Value" fullWidth 
+              <TextField id="standard-basic" label="Vestigingsnummer" variant="standard" defaultValue="Default Value" fullWidth 
               value={branchID}
               onChange={(e)=>setBranchID(e.target.value)}
               />
 
-            <TextField
-          id="standard-multiline-static"
-          label="Mies"
-          defaultValue="Default Value"
-          variant="standard"
-          fullWidth
-            />
             <Button 
-              class="AddButton" variant="contained" onClick={handleClick}>Sla gegevens op
+              class="AddButton" variant="contained" onClick={Update}>Sla gegevens op
             </Button>
             </Box>
             </Paper>
