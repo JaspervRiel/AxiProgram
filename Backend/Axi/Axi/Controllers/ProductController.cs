@@ -48,12 +48,12 @@ namespace Axi.Controllers
 
         [HttpDelete]
         [Route("api/[controller]")]
-        public IActionResult DeleteProduct(int ID)
+        public IActionResult DeleteProduct(Product product)
         {
             try
             {
-                pc.Delete(ID);
-                return Ok(ID);
+                pc.Delete(product.Id);
+                return Ok(product.Id);
             }
             catch
             {

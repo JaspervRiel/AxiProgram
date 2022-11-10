@@ -13,6 +13,17 @@ function Products(){
 
     const navigate = useNavigate();
 
+    const Delete=(product)=>{
+        console.log(product)
+        fetch('https://localhost:7157/api/Product',{
+          method:"DELETE",
+          headers:{"Content-Type":"application/json"},
+          body:JSON.stringify(product)
+        })
+        .then(res => res.text()) // or res.json()
+        .then(res => console.log(res))
+    }
+
 
 
     return(<div>
@@ -32,16 +43,6 @@ function Products(){
                     const toComponentB=()=>{
                         navigate('/EditProduct',{state:(item)});
                     }
-                    const Delete=()=>{
-                        const product = item.Id
-                        console.log(product)
-                        fetch('https://localhost:7157/api/Product',{
-                          method:"DELETE",
-                          body:(product)
-                        }).then(()=>{
-                          console.log("product deleted")
-                        })
-                    }
 
                 return <tr bgcolor="lightgrey" align="center">
                     <td>{JSON.stringify(item.Id)}</td> 
@@ -52,7 +53,7 @@ function Products(){
                     <td>{JSON.stringify(item.BranchID)}</td> 
                     <td> <Button onClick={()=>{toComponentB()}}>
                         aanpassen</Button></td>
-                    <td> <Button onClick={()=>{Delete()}}>
+                    <td> <Button onClick={()=>{Delete(item)}}>
                         Verwijderen</Button></td>
                 </tr>
             })}
