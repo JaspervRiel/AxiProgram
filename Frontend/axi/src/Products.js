@@ -4,6 +4,7 @@ import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
+import { Edit } from "@mui/icons-material";
 
 function Products() {
   const [producten, setProducten] = useState([]);
@@ -41,7 +42,7 @@ function Products() {
           </tr>
         </thead>
         {producten.map((item) => {
-          const toComponentB = () => {
+          const Edit = () => {
             navigate("/EditProduct", { state: item });
           };
 
@@ -58,7 +59,7 @@ function Products() {
                 <Button
                   className="Button"
                   onClick={() => {
-                    toComponentB();
+                    Edit();
                   }}
                 >
                   aanpassen
@@ -68,8 +69,15 @@ function Products() {
                 {" "}
                 <Button
                   className="Button"
+                  color="error"
                   onClick={() => {
-                    Delete(item);
+                    let result = window.confirm(
+                      "Are you sure you want to delete?"
+                    );
+
+                    let message = result
+                      ? Delete(item)
+                      : "You clicked the Cancel button";
                   }}
                 >
                   Verwijderen
