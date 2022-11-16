@@ -12,11 +12,13 @@ function ComponentB() {
 
   const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
   const id = uselocation.state.Id;
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [stock, setStock] = useState("");
-  const [productgroup, setProductGroup] = useState("");
-  const [branchID, setBranchID] = useState("");
+  const [name, setName] = useState(uselocation.state.Name);
+  const [location, setLocation] = useState(uselocation.state.Location);
+  const [stock, setStock] = useState(uselocation.state.Stock);
+  const [productgroup, setProductGroup] = useState(
+    uselocation.state.ProductGroup
+  );
+  const [branchID, setBranchID] = useState(uselocation.state.BranchID);
 
   const Update = (e) => {
     e.preventDefault();
