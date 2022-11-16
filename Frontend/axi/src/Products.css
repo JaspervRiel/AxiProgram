@@ -1,9 +1,21 @@
+.header{
+    color:#FFFFFF;
+    background-color: #7B42FA;
+}
+.TableInhoud{
+    background-color: #4F4F61;
+    color: #FFFFFF;
+}
 
 .table {
+    margin-top: 50px;
     text-align: center;
-    margin: 5%;
-    margin-left: 35%;
-    margin-right: 25%;
     overflow-y: scroll;
-    height: 500px;
+}
+.Button{
+    color: #FFFFFF !important;
+}
+.Button:hover{
+    color: #7B42FA !important;
+    background-color: transparent !important;
 }
