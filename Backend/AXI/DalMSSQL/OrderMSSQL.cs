@@ -138,7 +138,7 @@ namespace DalMSSQL
             connection.Open();
             List<ProductDTO> lijst = new List<ProductDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE ProductID	= '" + id + "'", connectionstring);
+            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE OrderId = '" + id + "'", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {

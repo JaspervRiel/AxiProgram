@@ -5,17 +5,27 @@ import { Button } from "@mui/material";
 
 function Order() {
   const [orders, setOrders] = useState([]);
+  const [Products, setProducts] = useState([]);
 
   function Active() {
+    ProductsFromOrder(0);
     fetch("https://localhost:7157/api/Orderactive")
       .then((response) => response.json())
       .then((json) => setOrders(json));
   }
 
   function completed() {
+    ProductsFromOrder(0);
     fetch("https://localhost:7157/api/Ordercompleted")
       .then((response) => response.json())
       .then((json) => setOrders(json));
+  }
+
+  function ProductsFromOrder(Id) {
+    console.log(Id);
+    fetch("https://localhost:7157/api/OrderGetOrderProducts?orderID=" + Id)
+      .then((response) => response.json())
+      .then((json) => setProducts(json));
   }
 
   return (
@@ -40,7 +50,9 @@ function Order() {
             return (
               <tr bgcolor="lightgrey" align="center">
                 <td>
-                  <Button>{JSON.stringify(item.Id)}</Button>
+                  <Button onClick={() => ProductsFromOrder(item.Id)}>
+                    {JSON.stringify(item.Id)}
+                  </Button>
                 </td>
                 <td>{JSON.stringify(item.OrderDate)}</td>
                 <td>{JSON.stringify(item.CompletedDate)}</td>
@@ -56,6 +68,15 @@ function Order() {
             <th>Locatie</th>
             <th>Aantal</th>
           </tr>
+          {Products.map((item) => {
+            return (
+              <tr bgcolor="lightgrey" align="center">
+                <td>{JSON.stringify(item.Name)}</td>
+                <td>{JSON.stringify(item.Location)}</td>
+                <td>{JSON.stringify(item.Stock)}</td>
+              </tr>
+            );
+          })}
         </table>
         <div class="content">
           <Button variant="outlined" color="success">
