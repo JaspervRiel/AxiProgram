@@ -1,36 +1,86 @@
 import React from "react";
-import './Products.css';
-import {useState} from "react"
+import "./Products.css";
+import { useState } from "react";
+import Navbar from "./Components/Navbar";
+import Button from "@mui/material/Button";
+import { Link, useNavigate } from "react-router-dom";
 
-function Products(){
-    const [producten, setProducten] = useState([])
-    fetch('https://localhost:7157/api/Product').then(response => response.json())
-    .then(json => setProducten(json));
+function Products() {
+  const [producten, setProducten] = useState([]);
+  fetch("https://localhost:7157/api/Product")
+    .then((response) => response.json())
+    .then((json) => setProducten(json));
 
+  const navigate = useNavigate();
 
-    return(<div>
-        <table bgcolor="black">
-            <tr bgcolor="grey">
-                <th>Name</th>
-                <th>Location</th>
-                <th>Stock</th>
-                <th>ProductGroup</th>
-                <th>branchID</th>
+  const Delete = (product) => {
+    console.log(product);
+    fetch("https://localhost:7157/api/Product", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.text()) // or res.json()
+      .then((res) => console.log(res));
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <table class="table">
+        <thead class="header">
+          <tr>
+            <th scope="col"> ID</th>
+            <th scope="col"> Name</th>
+            <th scope="col"> Location</th>
+            <th scope="col"> Stock</th>
+            <th scope="col"> ProductGroup</th>
+            <th scope="col"> branchID</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        {producten.map((item) => {
+          const toComponentB = () => {
+            navigate("/EditProduct", { state: item });
+          };
+
+          return (
+            <tr class="TableInhoud" align="center">
+              <td>{JSON.stringify(item.Id)}</td>
+              <td>{JSON.stringify(item.Name)}</td>
+              <td>{JSON.stringify(item.Location)}</td>
+              <td>{JSON.stringify(item.Stock)}</td>
+              <td>{JSON.stringify(item.ProductGroup)}</td>
+              <td>{JSON.stringify(item.BranchID)}</td>
+              <td>
+                {" "}
+                <Button
+                  className="Button"
+                  onClick={() => {
+                    toComponentB();
+                  }}
+                >
+                  aanpassen
+                </Button>
+              </td>
+              <td>
+                {" "}
+                <Button
+                  className="Button"
+                  onClick={() => {
+                    Delete(item);
+                  }}
+                >
+                  Verwijderen
+                </Button>
+              </td>
             </tr>
-            {producten.map(item => {
-                return <tr bgcolor="lightgrey" align="center">
-                    <td>{JSON.stringify(item.Name)}</td> 
-                    <td>{JSON.stringify(item.Location)}</td> 
-                    <td>{JSON.stringify(item.Stock)}</td> 
-                    <td>{JSON.stringify(item.ProductGroup)}</td> 
-                    <td>{JSON.stringify(item.BranchID)}</td> 
-                        </tr>
-            })}
-
-        </table>
-        
+          );
+        })}
+      </table>
     </div>
-    )
+  );
 }
 
 export default Products;

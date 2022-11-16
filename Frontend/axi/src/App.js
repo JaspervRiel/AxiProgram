@@ -5,6 +5,7 @@ import Home from './Home';
 import About from './About';
 import Products from './Products';
 import AddProduct from './AddProduct';
+import EditProduct from './EditProduct';
 import Orders from './Orders';
 import Levering from './Levering';
 import Locaties from './Locaties';
@@ -17,10 +18,11 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/About" element={<About/>} />
           <Route path='/Products' element={<Products/>}/>
-          <Route path ='/AddProduct' element={<AddProduct/>}/>
-          <Route  path="/Orders" element={<Orders/>} />
-          <Route  path="/Levering" element={<Levering/>} />
-          <Route  path="/Locaties" element={<Locaties/>} />
+          <Route path='/AddProduct' element={<AddProduct/>}/>
+          <Route path='/EditProduct' element={<EditProduct/>}/>
+          <Route path="/Orders" element={<Orders/>} />
+          <Route path="/Levering" element={<Levering/>} />
+          <Route path="/Locaties" element={<Locaties/>} />
       </Routes>
       </BrowserRouter>
     </div>
