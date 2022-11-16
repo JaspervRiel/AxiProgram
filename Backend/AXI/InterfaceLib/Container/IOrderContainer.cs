@@ -16,5 +16,6 @@ namespace InterfaceLib.Container
         public void Delete(int id);
         public void Update(OrderDTO order);
         public OrderDTO GetOrderById(int id);
+        public List<ProductDTO> GetProductsFromOrder(int id);
     }
 }

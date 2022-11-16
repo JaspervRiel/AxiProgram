@@ -51,5 +51,15 @@ namespace Axi.Controllers
             var json = JsonSerializer.Serialize(orders);
             return json;
         }
+
+        [HttpGet]
+        [Route("api/[controller]GetOrderProducts")]
+        public string GetOrderProducts(int orderID)
+        {
+            List<Product> products = oc.GetProductsFromOrder(orderID);
+
+            var json = JsonSerializer.Serialize(products);
+            return json;
+        }
     }
 }

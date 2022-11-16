@@ -1,4 +1,5 @@
-﻿using InterfaceLib.Container;
+﻿using InterfaceLib;
+using InterfaceLib.Container;
 using InterfaceLib.DTO;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,17 @@ namespace BusnLogic
                 orders.Add(new Order(dto));
             }
             return orders;
+        }
+
+        public List<Product> GetProductsFromOrder(int orderid)
+        {
+            List<ProductDTO> dtos = container.GetProductsFromOrder(orderid);
+            List<Product> products = new List<Product>();
+            foreach (ProductDTO dto in dtos)
+            {
+                products.Add(new Product(dto));
+            }
+            return products;
         }
 
         public List<Order> GetCompletedOrders()
