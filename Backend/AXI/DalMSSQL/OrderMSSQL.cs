@@ -38,6 +38,38 @@ namespace DalMSSQL
             return lijst;
         }
 
+        public List<OrderDTO> GetCompletedOrders()
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<OrderDTO> lijst = new List<OrderDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * from [Order] WHERE CompletedDate IS NOT NULL", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
+            }
+            connection.Close();
+            return lijst;
+        }
+
+        public List<OrderDTO> GetActiveOrders()
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<OrderDTO> lijst = new List<OrderDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * from [Order] WHERE CompletedDate IS NULL", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
+            }
+            connection.Close();
+            return lijst;
+        }
+
         public void Create(OrderDTO order)
         {
             SqlConnection connection = new SqlConnection(connectionstring);

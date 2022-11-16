@@ -28,6 +28,28 @@ namespace BusnLogic
             return orders;
         }
 
+        public List<Order> GetCompletedOrders()
+        {
+            List<OrderDTO> dtos = container.GetCompletedOrders();
+            List<Order> orders = new List<Order>();
+            foreach (OrderDTO dto in dtos)
+            {
+                orders.Add(new Order(dto));
+            }
+            return orders;
+        }
+
+        public List<Order> GetActiveOrders()
+        {
+            List<OrderDTO> dtos = container.GetActiveOrders();
+            List<Order> orders = new List<Order>();
+            foreach (OrderDTO dto in dtos)
+            {
+                orders.Add(new Order(dto));
+            }
+            return orders;
+        }
+
         public void Create(Order o)
         {
             OrderDTO dto = o.GetDTO();

@@ -20,11 +20,13 @@ function Order() {
 
     <table bgcolor="black" class="content">
             <tr bgcolor="grey">
+              <th>Id</th>
                 <th>OrderDate</th>
                 <th>CompletedDate</th>
             </tr>
              {orders.map(item => {
                 return <tr bgcolor="lightgrey" align="center">
+                    <td><Button>{JSON.stringify(item.Id)}</Button></td>
                     <td>{JSON.stringify(item.OrderDate)}</td> 
                     <td>{JSON.stringify(item.CompletedDate)}</td> 
                         </tr>

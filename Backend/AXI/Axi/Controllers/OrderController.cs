@@ -31,5 +31,25 @@ namespace Axi.Controllers
             var json = JsonSerializer.Serialize(orders);
             return json;
         }
+
+        [HttpGet]
+        [Route("api/[controller]completed")]
+        public string GetCompletedOrders()
+        {
+            List<Order> orders = oc.GetCompletedOrders();
+
+            var json = JsonSerializer.Serialize(orders);
+            return json;
+        }
+
+        [HttpGet]
+        [Route("api/[controller]active")]
+        public string GetActiveOrders()
+        {
+            List<Order> orders = oc.GetActiveOrders();
+
+            var json = JsonSerializer.Serialize(orders);
+            return json;
+        }
     }
 }

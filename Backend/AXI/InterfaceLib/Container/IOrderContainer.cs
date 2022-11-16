@@ -10,6 +10,8 @@ namespace InterfaceLib.Container
     public interface IOrderContainer
     {
         public List<OrderDTO> GetOrders();
+        public List<OrderDTO> GetCompletedOrders();
+        public List<OrderDTO> GetActiveOrders();
         public void Create(OrderDTO order);
         public void Delete(int id);
         public void Update(OrderDTO order);
