@@ -75,7 +75,7 @@ namespace DalMSSQL
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "INSERT INTO Product(ID, OrderDate, CompletedDate) VALUES(" +
+            string sql = "INSERT INTO [Order](ID, OrderDate, CompletedDate) VALUES(" +
                 "@ID," +
                 "@OrderDate," +
                 "@CompletedDate";
@@ -107,10 +107,11 @@ namespace DalMSSQL
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "Update Order SET " +
+            string sql = "UPDATE [Order] SET " +
                 "ID = @ID," +
                 "OrderDate = @OrderDate," +
-                "CompletedDate = @CompletedDate";
+                "CompletedDate = @CompletedDate " +
+                "WHERE ID = @ID";
 
             command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", order.Id);

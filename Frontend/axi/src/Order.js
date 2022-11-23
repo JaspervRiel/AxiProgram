@@ -6,6 +6,11 @@ import { Button } from "@mui/material";
 function Order() {
   const [orders, setOrders] = useState([]);
   const [Products, setProducts] = useState([]);
+  const [Id, setID] = useState([]);
+  const [OrderDate, setOrderDate] = useState([]);
+  const [CompletedDate, setCompletedDate] = useState([]);
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
 
   function Active() {
     ProductsFromOrder(0);
@@ -16,16 +21,28 @@ function Order() {
 
   function completed() {
     ProductsFromOrder(0);
-    fetch("https://localhost:7157/api/Ordercompleted")
+    fetch("https://localhost:7157/api/Ordercompletedorders")
       .then((response) => response.json())
       .then((json) => setOrders(json));
   }
 
   function ProductsFromOrder(Id) {
-    console.log(Id);
     fetch("https://localhost:7157/api/OrderGetOrderProducts?orderID=" + Id)
       .then((response) => response.json())
       .then((json) => setProducts(json));
+  }
+
+  const OrderUpdate = (e) => {
+    e.preventDefault();
+    const order = { Id, OrderDate, CompletedDate};
+    
+    fetch("https://localhost:7157/api/OrderUpdate", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.text()) // or res.json()
+      .then((res) => console.log(res));
   }
 
   return (
@@ -36,7 +53,7 @@ function Order() {
             Actieve Orders
           </Button>
           <Button variant="outlined" onClick={completed}>
-            Oude Orders
+            Oude Orders 
           </Button>
         </div>
 
@@ -79,7 +96,7 @@ function Order() {
           })}
         </table>
         <div class="content">
-          <Button variant="outlined" color="success">
+          <Button variant="outlined" color="success" onClick={() => OrderUpdate()}>
             Compleet
           </Button>
           <Button variant="outlined" color="error">

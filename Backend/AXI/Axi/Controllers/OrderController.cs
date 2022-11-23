@@ -32,8 +32,23 @@ namespace Axi.Controllers
             return json;
         }
 
+        [HttpPatch]
+        [Route("api/[controller]Update")]
+        public IActionResult UpdateOrder(Order order)
+        {
+            try
+            {
+                oc.Update(order);
+                return Ok(order);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+        }
+
         [HttpGet]
-        [Route("api/[controller]completed")]
+        [Route("api/[controller]CompletedOrders")]
         public string GetCompletedOrders()
         {
             List<Order> orders = oc.GetCompletedOrders();
@@ -43,7 +58,7 @@ namespace Axi.Controllers
         }
 
         [HttpGet]
-        [Route("api/[controller]active")]
+        [Route("api/[controller]ActiveOrders")]
         public string GetActiveOrders()
         {
             List<Order> orders = oc.GetActiveOrders();
