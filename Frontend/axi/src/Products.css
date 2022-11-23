@@ -12,10 +12,17 @@
     text-align: center;
     overflow-y: scroll;
 }
-.Button{
+.ButtonEdit{
     color: #FFFFFF !important;
 }
-.Button:hover{
+.ButtonEdit:hover{
     color: #7B42FA !important;
+    background-color: transparent !important;
+}
+.ButtonDelete{
+    color: #FFFFFF !important;
+}
+.ButtonDelete:hover{
+    color: #fa4242 !important;
     background-color: transparent !important;
 }

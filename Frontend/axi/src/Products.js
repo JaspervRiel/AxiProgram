@@ -57,7 +57,7 @@ function Products() {
               <td>
                 {" "}
                 <Button
-                  className="Button"
+                  className="ButtonEdit"
                   onClick={() => {
                     Edit();
                   }}
@@ -68,7 +68,7 @@ function Products() {
               <td>
                 {" "}
                 <Button
-                  className="Button"
+                  className="ButtonDelete"
                   color="error"
                   onClick={() => {
                     let result = window.confirm(
