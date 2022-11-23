@@ -10,11 +10,13 @@ function Order() {
   const [OrderDate, setOrderDate] = useState([]);
   const [CompletedDate, setCompletedDate] = useState([]);
   const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
 
   function Active() {
     ProductsFromOrder(0);
-    fetch("https://localhost:7157/api/Orderactive")
+    fetch("https://localhost:7157/api/OrderActiveOrders")
       .then((response) => response.json())
       .then((json) => setOrders(json));
   }
@@ -34,8 +36,8 @@ function Order() {
 
   const OrderUpdate = (e) => {
     e.preventDefault();
-    const order = { Id, OrderDate, CompletedDate};
-    
+    const order = { Id, OrderDate, CompletedDate };
+
     fetch("https://localhost:7157/api/OrderUpdate", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -43,7 +45,7 @@ function Order() {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
-  }
+  };
 
   return (
     <div class="container">
@@ -53,7 +55,7 @@ function Order() {
             Actieve Orders
           </Button>
           <Button variant="outlined" onClick={completed}>
-            Oude Orders 
+            Oude Orders
           </Button>
         </div>
 
@@ -96,7 +98,11 @@ function Order() {
           })}
         </table>
         <div class="content">
-          <Button variant="outlined" color="success" onClick={() => OrderUpdate()}>
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={() => OrderUpdate()}
+          >
             Compleet
           </Button>
           <Button variant="outlined" color="error">
