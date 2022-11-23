@@ -1,13 +1,18 @@
-.left{
-    float: left;
-    margin-left: 10px;
-    background-color: aqua;
+
+
+.left,
+.right {
+  padding: 20px;
+  width: 50%;
+  height: 94vh;
+  text-align: center;
 }
-.right{
-    float: right;
-    margin-right: 10px;
-    background-color: brown;
+
+.content {
+  width: 80%;
+  margin: 40px auto;
+  text-align: center;
 }
-.container{
-    background-color: purple;
-}
+.container {
+    display: flex;
+  }

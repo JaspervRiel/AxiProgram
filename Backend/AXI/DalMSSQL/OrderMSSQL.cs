@@ -28,11 +28,43 @@ namespace DalMSSQL
             connection.Open();
             List<OrderDTO> lijst = new List<OrderDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT * from Order", connectionstring);
+            SqlDataAdapter da = new("SELECT * from [Order]", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToDateTime(dr["OrderDate"]), Convert.ToDateTime(dr["CompletedDate"])));
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
+            }
+            connection.Close();
+            return lijst;
+        }
+
+        public List<OrderDTO> GetCompletedOrders()
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<OrderDTO> lijst = new List<OrderDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * from [Order] WHERE CompletedDate IS NOT NULL", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
+            }
+            connection.Close();
+            return lijst;
+        }
+
+        public List<OrderDTO> GetActiveOrders()
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<OrderDTO> lijst = new List<OrderDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * from [Order] WHERE CompletedDate IS NULL", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new OrderDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["OrderDate"]), Convert.ToString(dr["CompletedDate"])));
             }
             connection.Close();
             return lijst;
@@ -43,7 +75,7 @@ namespace DalMSSQL
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "INSERT INTO Product(ID, OrderDate, CompletedDate) VALUES(" +
+            string sql = "INSERT INTO [Order](ID, OrderDate, CompletedDate) VALUES(" +
                 "@ID," +
                 "@OrderDate," +
                 "@CompletedDate";
@@ -75,10 +107,11 @@ namespace DalMSSQL
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "Update Order SET " +
+            string sql = "UPDATE [Order] SET " +
                 "ID = @ID," +
                 "OrderDate = @OrderDate," +
-                "CompletedDate = @CompletedDate";
+                "CompletedDate = @CompletedDate " +
+                "WHERE ID = @ID";
 
             command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", order.Id);
@@ -97,7 +130,7 @@ namespace DalMSSQL
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
             connection.Close();
-            return new OrderDTO(reader.GetInt32("ID"), reader.GetDateTime("OrderDate"), reader.GetDateTime("CompletedDate"));
+            return new OrderDTO(reader.GetInt32("ID"), reader.GetString("OrderDate"), reader.GetString("CompletedDate"));
         }
 
         public List<ProductDTO> GetProductsFromOrder(int id)
@@ -106,7 +139,7 @@ namespace DalMSSQL
             connection.Open();
             List<ProductDTO> lijst = new List<ProductDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE ProductID	= '" + id + "'", connectionstring);
+            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE OrderId = '" + id + "'", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {

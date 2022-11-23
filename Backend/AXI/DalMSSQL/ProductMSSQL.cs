@@ -84,7 +84,7 @@ namespace DalMSSQL
             command.Parameters.AddWithValue("@ProductGroup", product.ProductGroup);
             command.Parameters.AddWithValue("@BranchID", product.BranchID);
             command.ExecuteNonQuery();
-            connection.Close ();
+            connection.Close();
         }
         public ProductDTO GetProductById(int id)
         {
