@@ -28,23 +28,24 @@ function Products() {
   return (
     <div>
       <Navbar />
-      <table class="table">
-        <thead class="header">
-          <tr>
-            <th scope="col"> ID</th>
-            <th scope="col"> Name</th>
-            <th scope="col"> Location</th>
-            <th scope="col"> Stock</th>
-            <th scope="col"> ProductGroup</th>
-            <th scope="col"> branchID</th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
-          </tr>
-        </thead>
-        {producten.map((item) => {
-          const Edit = () => {
-            navigate("/EditProduct", { state: item });
-          };
+      <div class="container">
+        <table class="table">
+          <thead class="header">
+            <tr>
+              <th scope="col"> ID</th>
+              <th scope="col"> Name</th>
+              <th scope="col"> Location</th>
+              <th scope="col"> Stock</th>
+              <th scope="col"> ProductGroup</th>
+              <th scope="col"> branchID</th>
+              <th scope="col"> </th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          {producten.map((item) => {
+            const Edit = () => {
+              navigate("/EditProduct", { state: item });
+            };
 
           return (
             <tr class="TableInhoud" align="center">
@@ -75,18 +76,19 @@ function Products() {
                       "Are you sure you want to delete?"
                     );
 
-                    let message = result
-                      ? Delete(item)
-                      : "You clicked the Cancel button";
-                  }}
-                >
-                  Verwijderen
-                </Button>
-              </td>
-            </tr>
-          );
-        })}
-      </table>
+                      let message = result
+                        ? Delete(item)
+                        : "You clicked the Cancel button";
+                    }}
+                  >
+                    Verwijderen
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+        </table>
+      </div>
     </div>
   );
 }
