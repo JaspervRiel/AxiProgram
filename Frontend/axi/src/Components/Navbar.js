@@ -14,7 +14,7 @@ function ColorSchemesExample() {
       ></link>
       <Navbar variant="white" className="square border-bottom border-5">
         <Container>
-          <Navbar.Brand href="https://www.axi.nl/nl">
+          <Navbar.Brand href="http://localhost:3000/">
             <img
               alt=""
               src="https://www.axi.nl/themes/custom/novsubtheme/img/logos/logo-axi-white.svg"

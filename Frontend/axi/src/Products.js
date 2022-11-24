@@ -32,12 +32,11 @@ function Products() {
         <table class="table">
           <thead class="header">
             <tr>
-              <th scope="col"> ID</th>
-              <th scope="col"> Name</th>
-              <th scope="col"> Location</th>
-              <th scope="col"> Stock</th>
-              <th scope="col"> ProductGroup</th>
-              <th scope="col"> branchID</th>
+              <th scope="col">Naam</th>
+              <th scope="col">Locatie</th>
+              <th scope="col">Vooraad</th>
+              <th scope="col">ProductGroep</th>
+              <th scope="col">Magazijn</th>
               <th scope="col"> </th>
               <th scope="col"> </th>
             </tr>
@@ -47,34 +46,33 @@ function Products() {
               navigate("/EditProduct", { state: item });
             };
 
-          return (
-            <tr class="TableInhoud" align="center">
-              <td>{JSON.stringify(item.Id)}</td>
-              <td>{JSON.stringify(item.Name)}</td>
-              <td>{JSON.stringify(item.Location)}</td>
-              <td>{JSON.stringify(item.Stock)}</td>
-              <td>{JSON.stringify(item.ProductGroup)}</td>
-              <td>{JSON.stringify(item.BranchID)}</td>
-              <td>
-                {" "}
-                <Button
-                  className="ButtonEdit"
-                  onClick={() => {
-                    Edit();
-                  }}
-                >
-                  aanpassen
-                </Button>
-              </td>
-              <td>
-                {" "}
-                <Button
-                  className="ButtonDelete"
-                  color="error"
-                  onClick={() => {
-                    let result = window.confirm(
-                      "Are you sure you want to delete?"
-                    );
+            return (
+              <tr class="TableInhoud" align="center">
+                <td>{item.Name}</td>
+                <td>{item.Location}</td>
+                <td>{item.Stock}</td>
+                <td>{item.ProductGroup}</td>
+                <td>{item.BranchID}</td>
+                <td>
+                  {" "}
+                  <Button
+                    className="ButtonEdit"
+                    onClick={() => {
+                      Edit();
+                    }}
+                  >
+                    aanpassen
+                  </Button>
+                </td>
+                <td>
+                  {" "}
+                  <Button
+                    className="ButtonDelete"
+                    color="error"
+                    onClick={() => {
+                      let result = window.confirm(
+                        "Are you sure you want to delete?"
+                      );
 
                       let message = result
                         ? Delete(item)

@@ -77,8 +77,8 @@ function Order() {
                       {JSON.stringify(item.Id)}
                     </Button>
                   </td>
-                  <td>{JSON.stringify(item.OrderDate)}</td>
-                  <td>{JSON.stringify(item.CompletedDate)}</td>
+                  <td>{item.OrderDate}</td>
+                  <td>{item.CompletedDate}</td>
                 </tr>
               );
             })}
@@ -107,8 +107,8 @@ function Order() {
               return (
                 <tr bgcolor="lightgrey" align="center">
                   <td class="tb-padding">{JSON.stringify(item.Name)}</td>
-                  <td>{JSON.stringify(item.Location)}</td>
-                  <td>{JSON.stringify(item.Stock)}</td>
+                  <td>{item.Location}</td>
+                  <td>{item.Stock}</td>
                 </tr>
               );
             })}
