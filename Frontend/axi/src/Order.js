@@ -66,8 +66,8 @@ function Order() {
           <table class="table">
             <tr class="header">
               <th>Id</th>
-              <th>OrderDate</th>
-              <th>CompletedDate</th>
+              <th>OrderDatum</th>
+              <th>OrderVoltooid</th>
             </tr>
             {orders.map((item) => {
               return (

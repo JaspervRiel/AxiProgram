@@ -71,7 +71,7 @@ function Products() {
                     color="error"
                     onClick={() => {
                       let result = window.confirm(
-                        "Are you sure you want to delete?"
+                        "weet je zeker dat je het wilt verwijderen?"
                       );
 
                       let message = result
