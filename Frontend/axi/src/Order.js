@@ -63,8 +63,8 @@ function Order() {
             </Button>
           </div>
 
-          <table bgcolor="black" class="content">
-            <tr bgcolor="grey">
+          <table class="table">
+            <tr class="header">
               <th>Id</th>
               <th>OrderDate</th>
               <th>CompletedDate</th>
@@ -85,22 +85,6 @@ function Order() {
           </table>
         </div>
         <div class="right">
-          <table bgcolor="black" class="content">
-            <tr bgcolor="grey">
-              <th>ArtikelNaam</th>
-              <th>Locatie</th>
-              <th>Aantal</th>
-            </tr>
-            {Products.map((item) => {
-              return (
-                <tr bgcolor="lightgrey" align="center">
-                  <td>{JSON.stringify(item.Name)}</td>
-                  <td>{JSON.stringify(item.Location)}</td>
-                  <td>{JSON.stringify(item.Stock)}</td>
-                </tr>
-              );
-            })}
-          </table>
           <div class="content">
             <Button
               variant="outlined"
@@ -113,6 +97,22 @@ function Order() {
               Niet Compleet
             </Button>
           </div>
+          <table class="table">
+            <tr class="header">
+              <th>ArtikelNaam</th>
+              <th>Locatie</th>
+              <th>Aantal</th>
+            </tr>
+            {Products.map((item) => {
+              return (
+                <tr bgcolor="lightgrey" align="center">
+                  <td class="tb-padding">{JSON.stringify(item.Name)}</td>
+                  <td>{JSON.stringify(item.Location)}</td>
+                  <td>{JSON.stringify(item.Stock)}</td>
+                </tr>
+              );
+            })}
+          </table>
         </div>
       </div>
     </div>
