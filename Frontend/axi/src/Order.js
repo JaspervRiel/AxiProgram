@@ -108,7 +108,7 @@ function Order() {
                 <tr bgcolor="lightgrey" align="center">
                   <td class="tb-padding">{JSON.stringify(item.Name)}</td>
                   <td>{item.Location}</td>
-                  <td>{item.Stock}</td>
+                  <td>{item.AmountInOrder}</td>
                 </tr>
               );
             })}
