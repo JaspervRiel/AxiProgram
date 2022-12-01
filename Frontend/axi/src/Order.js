@@ -33,17 +33,13 @@ function Order() {
     fetch("https://localhost:7157/api/OrderGetOrderProducts?orderID=" + Id)
       .then((response) => response.json())
       .then((json) => setProducts(json));
+      setID(Id)
   }
 
   const OrderUpdate = (e) => {
     e.preventDefault();
-    const order = { Id, OrderDate, CompletedDate };
-
-    fetch("https://localhost:7157/api/OrderUpdate", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(order),
-    })
+    const dateTime = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`
+    fetch("https://localhost:7157/api/OrderUpdate?id="+Id+"&DateTime="+dateTime)
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
   };

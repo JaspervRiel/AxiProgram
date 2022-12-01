@@ -73,9 +73,9 @@ namespace BusnLogic
             container.Delete(ID);
         }
 
-        public void Update(Order o)
+        public void Update(int id, string DateTime)
         {
-            OrderDTO dto = o.GetDTO();
+            OrderDTO dto = new(id: id, completedDate: DateTime, orderDate: null);
             container.Update(dto);
         }
 

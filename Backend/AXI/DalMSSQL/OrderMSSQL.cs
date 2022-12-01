@@ -108,14 +108,11 @@ namespace DalMSSQL
             connection.Open();
             SqlCommand command;
             string sql = "UPDATE [Order] SET " +
-                "ID = @ID," +
-                "OrderDate = @OrderDate," +
                 "CompletedDate = @CompletedDate " +
                 "WHERE ID = @ID";
 
             command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", order.Id);
-            command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
             command.Parameters.AddWithValue("@CompletedDate", order.CompletedDate);
             command.ExecuteNonQuery();
             connection.Close();
