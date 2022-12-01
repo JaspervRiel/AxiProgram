@@ -38,6 +38,12 @@ namespace BusnLogic
             }
             return bestellings;
         }
+        public void Update(Bestelling b)
+        {
+            BestellingDTO dto = b.GetDTO();
+            container.Update(dto);
+        }
+
 
     }
 }

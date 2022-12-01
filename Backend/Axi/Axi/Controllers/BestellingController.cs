@@ -39,5 +39,20 @@ namespace Axi.Controllers
             var json = JsonSerializer.Serialize(bestelling);
             return json;
         }
+
+        [HttpPatch]
+        [Route("api/[controller]")]
+        public IActionResult UpdateBestelling(Bestelling bestelling)
+        {
+            try
+            {
+                bc.Update(bestelling);
+                return Ok(bestelling);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+        }
     }
 }

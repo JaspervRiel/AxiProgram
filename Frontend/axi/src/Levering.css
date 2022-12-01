@@ -1,5 +1,39 @@
-.flex-page{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 50% 50%;
+.left,
+.right {
+  padding-top: 0px;
+  padding: 20px;
+  width: 50%;
+  height: 94vh;
+  text-align: center;
+}
+
+.content {
+  width: 80%;
+  margin: 20px auto;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.container {
+    display: flex;
+}
+
+.table {
+  margin-top: 20px;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.header{
+  color:#FFFFFF;
+  background-color: #7B42FA;
+}
+
+.table>:not(:first-child){
+  border-top: 0px solid currentColor !important;
+  border-bottom: 1px solid currentColor;
+}
+
+.tb-padding{
+  padding: .5rem .5rem;
 }

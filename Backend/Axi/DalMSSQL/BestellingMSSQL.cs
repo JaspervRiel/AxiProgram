@@ -58,5 +58,21 @@ namespace DalMSSQL
         {
             throw new NotImplementedException();
         }
+
+        public void Update(BestellingDTO bestelling)
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            SqlCommand command;
+            string sql = "UPDATE [Order] SET " +
+                "Completed = 1" +
+                "WHERE ID = @ID";
+
+            command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@ID", bestelling.Id);
+
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
