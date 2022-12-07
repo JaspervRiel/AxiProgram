@@ -90,10 +90,25 @@ namespace DalMSSQL
 
         public void Delete(int id)
         {
+            DeleteProductsFromOrder(id);
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "DELETE FROM Order WHERE ID = @ID";
+            string sql = "DELETE FROM [Order] WHERE ID = @ID";
+
+            command = new SqlCommand(sql, connection);
+
+            command.Parameters.AddWithValue("@ID", id);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        private void DeleteProductsFromOrder(int id)
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            SqlCommand command;
+            string sql = "DELETE FROM ProductOrder WHERE ProductOrder.OrderID = @ID";
 
             command = new SqlCommand(sql, connection);
 

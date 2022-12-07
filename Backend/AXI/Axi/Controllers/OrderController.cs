@@ -32,7 +32,7 @@ namespace Axi.Controllers
             return json;
         }
 
-        [HttpGet]
+        [HttpDelete]
         [Route("api/[controller]Delete")]
         public IActionResult OrderDelete(int id)
         {

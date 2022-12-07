@@ -44,6 +44,11 @@ function Order() {
       .then((res) => console.log(res));
   };
 
+  function OrderDelete(Id) {
+    fetch("https://localhost:7157/api/OrderDelete?orderID=" + Id)
+      .then((response) => response.json())
+  };
+
   return (
     <div>
       {" "}
@@ -89,7 +94,7 @@ function Order() {
             >
               Compleet
             </Button>
-            <Button variant="outlined" color="error">
+            <Button variant="outlined" color="error" onClick={() => OrderDelete(Id)}>
               Niet Compleet
             </Button>
           </div>
