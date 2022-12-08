@@ -1,15 +1,14 @@
 import "./Order.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import Navbar from "./Components/Navbar";
+import { grey } from "@mui/material/colors";
 
 function Order() {
   const [orders, setOrders] = useState([]);
   const [Products, setProducts] = useState([]);
   const [Id, setID] = useState([]);
-  const [OrderDate, setOrderDate] = useState([]);
-  const [CompletedDate, setCompletedDate] = useState([]);
   const current = new Date();
   const date = `${current.getDate()}/${
     current.getMonth() + 1
@@ -21,6 +20,10 @@ function Order() {
       .then((response) => response.json())
       .then((json) => setOrders(json));
   }
+
+  useEffect(() => {
+    Active();
+  }, []);
 
   function completed() {
     ProductsFromOrder(0);
@@ -43,11 +46,18 @@ function Order() {
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
   };
-
-  function OrderDelete(Id) {
-    fetch("https://localhost:7157/api/OrderDelete?orderID=" + Id)
-      .then((response) => response.json())
+  
+  const OrderDelete = (product) => {
+    console.log(product);
+    fetch("https://localhost:7157/api/OrderDelete?id=" + Id, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.text()) // or res.json()
+      .then((res) => console.log(res));
   };
+  
 
   return (
     <div>
@@ -72,12 +82,8 @@ function Order() {
             </tr>
             {orders.map((item) => {
               return (
-                <tr bgcolor="lightgrey" align="center">
-                  <td>
-                    <Button onClick={() => ProductsFromOrder(item.Id)}>
-                      {JSON.stringify(item.Id)}
-                    </Button>
-                  </td>
+                <tr bgcolor="lightgrey" align="center" className="tabelLine" onClick={() => ProductsFromOrder(item.Id)}>
+                  <td> {JSON.stringify(item.Id)}</td>
                   <td>{item.OrderDate}</td>
                   <td>{item.CompletedDate}</td>
                 </tr>
@@ -94,7 +100,7 @@ function Order() {
             >
               Compleet
             </Button>
-            <Button variant="outlined" color="error" onClick={() => OrderDelete(Id)}>
+            <Button variant="outlined" color="error" onClick={() => OrderDelete()}>
               Niet Compleet
             </Button>
           </div>
