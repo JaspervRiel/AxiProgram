@@ -9,10 +9,10 @@ namespace InterfaceLib.Container
 {
     public interface IBestellingContainer
     {
-        public List<BestellingDTO> GetCompletedOrders();
-        public List<BestellingDTO> GetActiveOrders();
+        public List<BestellingDTO> GetCompletedBestelling();
+        public List<BestellingDTO> GetActiveBestelling();
         public void Update(BestellingDTO bestelling);
 
-        public List<ProductDTO> GetProductsFromOrder(int id);
+        public List<ProductDTO> GetProductsFromBestelling(int id);
     }
 }

@@ -22,7 +22,7 @@ namespace Axi.Controllers
 
         [HttpGet]
         [Route("api/[controller]Completed")]
-        public string GetCompletedOrders()
+        public string GetCompletedBestelling()
         {
             List<Bestelling> bestelling = bc.GetCompletedBestelling();
 
@@ -32,7 +32,7 @@ namespace Axi.Controllers
 
         [HttpGet]
         [Route("api/[controller]Active")]
-        public string GetActiveOrders()
+        public string GetActiveBestelling()
         {
             List<Bestelling> bestelling = bc.GetActiveBestelling();
 
@@ -41,7 +41,7 @@ namespace Axi.Controllers
         }
 
         [HttpPatch]
-        [Route("api/[controller]")]
+        [Route("api/[controller]update")]
         public IActionResult UpdateBestelling(Bestelling bestelling)
         {
             try
@@ -53,6 +53,16 @@ namespace Axi.Controllers
             {
                 return Unauthorized();
             }
+        }
+
+        [HttpGet]
+        [Route("api/[controller]Products")]
+        public string GetBestellingProducts(int orderID)
+        {
+            List<Product> products = bc.GetProductsFromBestelling(orderID);
+
+            var json = JsonSerializer.Serialize(products);
+            return json;
         }
     }
 }

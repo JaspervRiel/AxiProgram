@@ -22,7 +22,7 @@ namespace DalMSSQL
             connection = new Database(connectionstring);
         }
 
-        public List<BestellingDTO> GetActiveOrders()
+        public List<BestellingDTO> GetActiveBestelling()
         {
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
@@ -38,7 +38,7 @@ namespace DalMSSQL
             return BestList;
         }
 
-        public List<BestellingDTO> GetCompletedOrders()
+        public List<BestellingDTO> GetCompletedBestelling()
         {
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
@@ -54,9 +54,20 @@ namespace DalMSSQL
             return BestList;
         }
 
-        public List<ProductDTO> GetProductsFromOrder(int id)
+        public List<ProductDTO> GetProductsFromBestelling(int id)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<ProductDTO> lijst = new List<ProductDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT Product.*, BestelProduct.AantalProduct FROM Product JOIN BestelProduct on BestelProduct.ProductID = Product.ID WHERE BestellingID = '" + id + "'", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["AantalProduct"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"])));
+            }
+            connection.Close();
+            return lijst;
         }
 
         public void Update(BestellingDTO bestelling)

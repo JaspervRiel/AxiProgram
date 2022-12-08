@@ -1,32 +1,48 @@
 import React from "react";
 import "./Levering.css";
 import Navbar from "./Components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 
 function Levering() {
   const [levering, setLevering] = useState([]);
   const [Products, setProducts] = useState([]);
   const [Id, setID] = useState([]);
+  const [active, setactive] = useState([]);
   const [Name, setName] = useState([]);
   const [OrderDate, setOrderDate] = useState([]);
+  const [Bestelling, setBestelling] = useState([]);
+  const [BestellingName, setBestellingName] = useState([]);
 
-  function Active() {
-    fetch("https://localhost:7157/api/BestellingActive")
-      .then((response) => response.json())
-      .then((json) => setLevering(json));
+  useEffect(() => {
+    Active();
+  }, []);
+
+  async function Active() {
+    try {
+      setBestelling("Actief");
+      setactive("1");
+      fetch("https://localhost:7157/api/BestellingActive")
+        .then((response) => response.json())
+        .then((json) => setLevering(json));
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  function completed() {
+  async function completed() {
+    setBestelling("Compleet");
+    setactive("2");
     fetch("https://localhost:7157/api/BestellingCompleted")
       .then((response) => response.json())
       .then((json) => setLevering(json));
   }
 
-  function ProductsFromLevering(Id) {
-    fetch("https://localhost:7157/api/OrderGetOrderProducts?orderID=" + Id)
+  function ProductsFromLevering(Id, Name) {
+    setBestellingName(Name);
+    fetch("https://localhost:7157/api/BestellingProducts?orderID=" + Id)
       .then((response) => response.json())
-      .then((json) => setLevering(json));
+      .then((json) => setProducts(json));
   }
 
   function LeveringUpdate(e) {
@@ -55,18 +71,22 @@ function Levering() {
               Oude leveringen
             </Button>
           </div>
-
+          <h1>{Bestelling}</h1>
           <table class="table">
             <tr class="header">
               <th>Id</th>
               <th>Naam</th>
-              <th>OrderDatum</th>
+              <th>BestelDatum</th>
             </tr>
             {levering.map((item) => {
               return (
                 <tr bgcolor="lightgrey" align="center">
                   <td>
-                    <Button>{item.Id}</Button>
+                    <Button
+                      onClick={() => ProductsFromLevering(item.Id, item.Name)}
+                    >
+                      {item.Id}
+                    </Button>
                   </td>
                   <td>{item.Name}</td>
                   <td>{item.OrderDate}</td>
@@ -88,6 +108,7 @@ function Levering() {
               Niet Compleet
             </Button>
           </div>
+          <h1>Bestelling van : {BestellingName}</h1>
           <table class="table">
             <tr class="header">
               <th>ArtikelNaam</th>
@@ -97,7 +118,7 @@ function Levering() {
             {Products.map((item) => {
               return (
                 <tr bgcolor="lightgrey" align="center">
-                  <td class="tb-padding">{JSON.stringify(item.Name)}</td>
+                  <td class="tb-padding">{item.Name}</td>
                   <td>{item.Location}</td>
                   <td>{item.Stock}</td>
                 </tr>
