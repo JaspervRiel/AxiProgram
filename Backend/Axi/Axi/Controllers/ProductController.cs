@@ -75,5 +75,15 @@ namespace Axi.Controllers
                 return Unauthorized();
             }
         }
+
+        [HttpGet]
+        [Route("api/[controller]/productgroup")]
+        public string GetProductsByProductGroupID(int ID)
+        {
+            List<Product> products = pc.GetAllProductsByProductGroupID(ID);
+
+            var json = JsonSerializer.Serialize(products);
+            return json;
+        }
     }
 }
