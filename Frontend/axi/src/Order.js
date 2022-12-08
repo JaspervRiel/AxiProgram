@@ -41,12 +41,16 @@ function Order() {
 
   const OrderUpdate = (e) => {
     e.preventDefault();
-    const dateTime = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`
-    fetch("https://localhost:7157/api/OrderUpdate?id="+Id+"&DateTime="+dateTime)
-      .then((res) => res.text()) // or res.json()
-      .then((res) => console.log(res));
+    const dateTime = `${current.getDate()}-${current.getMonth() + 1}-${current.getFullYear()}`
+    console.log(dateTime);
+    fetch("https://localhost:7157/api/OrderUpdate?id=" + Id + "&DateTime=" + dateTime, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" }
+    })
   };
   
+
+
   const OrderDelete = (product) => {
     console.log(product);
     fetch("https://localhost:7157/api/OrderDelete?id=" + Id, {
@@ -96,7 +100,7 @@ function Order() {
             <Button
               variant="outlined"
               color="success"
-              onClick={() => OrderUpdate()}
+              onClick={OrderUpdate}
             >
               Compleet
             </Button>
