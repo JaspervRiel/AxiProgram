@@ -10,7 +10,6 @@ function Products() {
   const [producten, setProducten] = useState([]);
   const [products, setProducts] = useState([]);
 
-
   fetch("https://localhost:7157/api/Product")
     .then((response) => response.json())
     .then((json) => setProducten(json));
@@ -41,24 +40,14 @@ function Products() {
     .then((json) => setProducts(json));
   }
 
-
-  /*const click =(e) => {
-    const mies = e.target.value;
-    const firstTwoChars = mies.slice(0, 2);
-    console.log(firstTwoChars); 
-  }*/
-
   return (
     <div>
       <Navbar />
       <select  onChange={GetAllProductsByProductGroup}>
       {productgroups.map((item) => {  
-              return (  
-                 
-              <option onSelect={() => GetAllProductsByProductGroup(item.id)}>{item.Id + " " + item.ProductGroupName}</option> 
-                 
+              return (              
+              <option onSelect={() => GetAllProductsByProductGroup(item.id)}>{item.Id + " " + item.ProductGroupName}</option>   
               );
-              
             })}
             </select>
       <table class="table">
