@@ -17,7 +17,7 @@ namespace BusnLogic
             iUsers = iuser;
         }
 
-        List<User> GetAllUsers()
+        public List<User> GetAllUsers()
         {
 
             List<UserDTO> usersDTOS = iUsers.GetAllUsers();
@@ -29,14 +29,14 @@ namespace BusnLogic
             return Users;
         }
 
-        User Getbyid(int id)
+        public User Getbyid(int id)
         {
             UserDTO userdto = iUsers.GetById(id);
             User user = new User(userdto);
             return user;
         }
 
-        List<User> getAllManagers()
+        public List<User> getAllManagers()
         {
             List<UserDTO>userdtos = iUsers .GetAllManagers();
             List<User> users = new List<User>();
@@ -48,14 +48,14 @@ namespace BusnLogic
 
         }
 
-        void createUser(User user)
+        public void createUser(User user)
         {
             UserDTO userDTO = user.getDTO();
             iUsers.CreateUser(userDTO);
         }
-        void deleteUser(User user)
+        public void deleteUser(User user)
         {
-           iUsers.DeleteUser(user.id)
+            iUsers.DeleteUser(user.id);
         }
 
     }
