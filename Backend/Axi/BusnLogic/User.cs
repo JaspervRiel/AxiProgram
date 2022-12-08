@@ -15,6 +15,8 @@ namespace BusnLogic
         public string Phonenumber { get; set; }
         public bool isManager { get; set; }
 
+        public User() { }
+
         public User(int id, string name, string email, string phonenumber, bool isManager)
         {
             this.id = id;
