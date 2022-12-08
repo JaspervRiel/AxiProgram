@@ -8,14 +8,16 @@ namespace InterfaceLib.DTO
 {
     public class UserDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phonenumber { get; set; }
         public bool isManager { get; set; }
 
 
-        public UserDTO(string name, string email, string phonenumber, bool isManager)
+        public UserDTO(int id,string name, string email, string phonenumber, bool isManager)
         {
+            this.Id = id;
             this.Name = name;
             this.Email = email;
             this.Phonenumber = phonenumber;

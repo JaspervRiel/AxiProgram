@@ -25,6 +25,7 @@ namespace BusnLogic
         }
         public User(UserDTO userdto)
         {
+            this.id = userdto.Id;
             this.Name = userdto.Name;
             this.Email = userdto.Email;
             this.Phonenumber = userdto.Phonenumber;
@@ -33,7 +34,7 @@ namespace BusnLogic
 
         public UserDTO getDTO()
         {
-            UserDTO userdto = new UserDTO(Name, Email, Phonenumber, isManager);
+            UserDTO userdto = new UserDTO(id,Name, Email, Phonenumber, isManager);
             return userdto;
         }
     }
