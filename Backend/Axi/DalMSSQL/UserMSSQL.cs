@@ -23,22 +23,44 @@ namespace DalMSSQL
             this.database = new Database(connectiestring);
         }
 
-       public void CreateUser(UserDTO userDTO)
+        public int CheckCredentials(string username, string password)
+        {
+            SqlConnection connection = new SqlConnection(connectiestring);
+            connection.Open();
+            string sql = "SELECT Id FROM Users WHERE Naam = '" + username + "' AND Password = '" +password+"'" ;
+            SqlCommand cmd = new SqlCommand(sql, connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            int id =reader.GetInt32("ID");
+            connection.Close();
+            return id;
+        }
+
+        public void CreateUser(UserDTO userDTO)
         {
             SqlConnection connection = new SqlConnection(connectiestring);
             connection.Open();
             SqlCommand command;
-            string sql = "INSERT INTO Users(Naam, Email, Telefoonnummer, isManager) VALUES(" +
+            string sql = "INSERT INTO Users(Naam, Password, Email, Telefoonnummer, isManager) VALUES(" +
                 "@Naam," +
+                "@Password,"+
                 "@Email," +
                 "@Telefoonnummer," +
-                "@Ismanager,";
+                "@Ismanager)";
 
             command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@Naam", userDTO.Name);
+            command.Parameters.AddWithValue("@Password", userDTO.Password);
             command.Parameters.AddWithValue("@Email", userDTO.Email);
             command.Parameters.AddWithValue("@Telefoonnummer", userDTO.Phonenumber);
-            command.Parameters.AddWithValue("@Ismanager", userDTO.isManager);
+            if(userDTO.isManager == true)
+            {
+                command.Parameters.AddWithValue("@IsManager", 1);
+
+            }
+            else{
+                command.Parameters.AddWithValue("@IsManager", 0);
+            }
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -67,7 +89,7 @@ namespace DalMSSQL
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new UserDTO(Convert.ToInt32(dr["Id"]), Convert.ToString(dr["Naam"]), Convert.ToString(dr["Email"]), Convert.ToString(dr["Telefoonnummer"]), Convert.ToBoolean(dr["isManager"])));
+                lijst.Add(new UserDTO(Convert.ToInt32(dr["Id"]), Convert.ToString(dr["Naam"]), Convert.ToString(dr["Email"]), Convert.ToString(dr["Telefoonnummer"]), Convert.ToBoolean(dr["isManager"]), Convert.ToString(dr["Password"])));
             }
             connection.Close();
             return lijst;
@@ -83,7 +105,7 @@ namespace DalMSSQL
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new UserDTO(Convert.ToInt32(dr["Id"]), Convert.ToString(dr["Naam"]), Convert.ToString(dr["Email"]), Convert.ToString(dr["Telefoonnummer"]), Convert.ToBoolean(dr["isManager"])));
+                lijst.Add(new UserDTO(Convert.ToInt32(dr["Id"]), Convert.ToString(dr["Naam"]), Convert.ToString(dr["Email"]), Convert.ToString(dr["Telefoonnummer"]), Convert.ToBoolean(dr["isManager"]), Convert.ToString(dr["Password"])));
             }
             connection.Close();
             return lijst;
@@ -97,8 +119,9 @@ namespace DalMSSQL
             SqlCommand cmd = new SqlCommand(sql, connection);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
+            UserDTO userDTO = new UserDTO(reader.GetInt32("ID"), reader.GetString("Naam"), reader.GetString("Email"), reader.GetString("Telefoonnummer"), reader.GetBoolean("isManager"),reader.GetString("Password"));
             connection.Close();
-            return new UserDTO(reader.GetInt32("ID"), reader.GetString("Naam"), reader.GetString("Email"), reader.GetString("Telefoonnummer"), reader.GetBoolean("isManager"));
+            return userDTO;        
         }
     }
 }

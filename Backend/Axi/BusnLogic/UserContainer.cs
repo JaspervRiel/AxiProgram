@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using InterfaceLib.Container;
@@ -12,6 +13,15 @@ namespace BusnLogic
     {
         public readonly iUsers iUsers;
 
+        public string hashpassword(string password)
+        {
+            var sha = SHA256.Create();
+            var asByteArray = Encoding.Default.GetBytes(password);
+            var hashedpassword = sha.ComputeHash(asByteArray);
+            return Convert.ToBase64String(hashedpassword);
+        }
+        
+        
         public UserContainer(iUsers iuser)
         {
             iUsers = iuser;
@@ -51,11 +61,18 @@ namespace BusnLogic
         public void createUser(User user)
         {
             UserDTO userDTO = user.getDTO();
+            userDTO.Password = hashpassword(userDTO.Password);
             iUsers.CreateUser(userDTO);
         }
         public void deleteUser(User user)
         {
             iUsers.DeleteUser(user.id);
+        }
+
+        public int getByCredentials(string username, string password)
+        {
+            string hashedpassword = hashpassword(password);
+            return iUsers.CheckCredentials(username, hashedpassword);
         }
 
     }

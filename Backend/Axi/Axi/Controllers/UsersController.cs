@@ -79,5 +79,19 @@ namespace Axi.Controllers
                 return Unauthorized();
             }
         }
+        [HttpGet]
+        [Route("api/CheckCredentials")]
+        public int CheckCredentails(string username, string password)
+        {
+            try
+            {
+
+                return us.getByCredentials(username, password);
+            }
+            catch
+            {
+                throw new Exception();
+            }
+        }
     }
 }
