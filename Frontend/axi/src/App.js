@@ -9,6 +9,7 @@ import EditProduct from "./EditProduct";
 import Order from "./Order";
 import Levering from "./Levering";
 import Locaties from "./Locaties";
+import Gebruiker from "./Gebruiker";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Order" element={<Order />} />
           <Route path="/Levering" element={<Levering />} />
           <Route path="/Locaties" element={<Locaties />} />
+          <Route path="/Gebruiker" element={<Gebruiker />} />
         </Routes>
       </BrowserRouter>
     </div>
