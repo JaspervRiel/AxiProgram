@@ -9,6 +9,7 @@ import { Edit, FirstPageTwoTone } from "@mui/icons-material";
 function Products() {
   const [producten, setProducten] = useState([]);
   const [products, setProducts] = useState([]);
+  const bool = new Boolean(false);
 
   fetch("https://localhost:7157/api/Product")
     .then((response) => response.json())
@@ -40,6 +41,12 @@ function Products() {
     .then((json) => setProducts(json));
   }
 
+  const BooleanTrue = () => {
+    this.setState({ bool: true}) 
+    console.log("button clicked")
+  }
+
+
   return (
     <div>
       <Navbar />
@@ -49,21 +56,24 @@ function Products() {
               <option onSelect={() => GetAllProductsByProductGroup(item.id)}>{item.Id + " " + item.ProductGroupName}</option>   
               );
             })}
-            </select>
+            </select>  
+            {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
+
       <table class="table">
         <thead class="header">
           <tr>
             <th scope="col"> ID</th>
-            <th scope="col"> Name</th>
-            <th scope="col"> Location</th>
-            <th scope="col"> Stock</th>
-            <th scope="col"> ProductGroup   
+            <th scope="col"> Productnaam</th>
+            <th scope="col"> Locatie</th>
+            <th scope="col"> Voorraad</th>
+            <th scope="col"> Productgroep   
             </th>
-            <th scope="col"> branchID</th>
+            <th scope="col"> FiliaalID</th>
             <th scope="col"> </th>
             <th scope="col"> </th>
           </tr>
         </thead>
+
         {products.map((item) => {
           const Edit = () => {
             navigate("/EditProduct", { state: item });
