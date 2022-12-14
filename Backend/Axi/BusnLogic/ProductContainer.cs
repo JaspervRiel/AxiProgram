@@ -45,5 +45,16 @@ namespace BusnLogic
             ProductDTO? dto = container.GetProductById(id);
             return new Product(dto);
         }
+
+        public List<Product> GetAllProductsByProductGroupID(int id)
+        {
+            List<ProductDTO> dtos = container.GetAllProductsByProductGroupID(id);
+            List<Product> products = new List<Product>();
+            foreach (ProductDTO dto in dtos)
+            {
+                products.Add(new Product(dto));
+            }
+            return products;
+        }
     }
 }

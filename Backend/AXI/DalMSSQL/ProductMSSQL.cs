@@ -97,5 +97,21 @@ namespace DalMSSQL
             connection.Close();
             return new ProductDTO(reader.GetInt32("ID"), reader.GetString("Name"), reader.GetString("Location"), reader.GetInt32("Stock"), reader.GetInt32("ProductGroup"), reader.GetInt32("BranchID"));
         }
+
+        public List<ProductDTO> GetAllProductsByProductGroupID(int Id)
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<ProductDTO> lijst = new List<ProductDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * FROM Product WHERE ProductGroup = '" + Id + "'", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["Stock"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"])));
+            }
+            connection.Close();
+            return lijst;
+        }
     }
 }
