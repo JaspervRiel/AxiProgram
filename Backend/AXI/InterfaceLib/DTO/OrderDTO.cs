@@ -9,11 +9,11 @@ namespace InterfaceLib.DTO
     public class OrderDTO
     {
         public int Id { get; set; }
-        public string OrderDate { get; set; }
+        public string? OrderDate { get; set; }
         public string? CompletedDate { get; set; }
         public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
 
-        public OrderDTO(int id, string orderDate, string? completedDate)
+        public OrderDTO(int id, string? orderDate, string? completedDate)
         {
             Id = id;
             OrderDate = orderDate;

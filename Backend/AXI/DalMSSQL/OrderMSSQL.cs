@@ -90,10 +90,25 @@ namespace DalMSSQL
 
         public void Delete(int id)
         {
+            DeleteProductsFromOrder(id);
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "DELETE FROM Order WHERE ID = @ID";
+            string sql = "DELETE FROM [Order] WHERE ID = @ID";
+
+            command = new SqlCommand(sql, connection);
+
+            command.Parameters.AddWithValue("@ID", id);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        private void DeleteProductsFromOrder(int id)
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            SqlCommand command;
+            string sql = "DELETE FROM ProductOrder WHERE ProductOrder.OrderID = @ID";
 
             command = new SqlCommand(sql, connection);
 
@@ -108,14 +123,11 @@ namespace DalMSSQL
             connection.Open();
             SqlCommand command;
             string sql = "UPDATE [Order] SET " +
-                "ID = @ID," +
-                "OrderDate = @OrderDate," +
                 "CompletedDate = @CompletedDate " +
                 "WHERE ID = @ID";
 
             command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@ID", order.Id);
-            command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
             command.Parameters.AddWithValue("@CompletedDate", order.CompletedDate);
             command.ExecuteNonQuery();
             connection.Close();
@@ -139,11 +151,11 @@ namespace DalMSSQL
             connection.Open();
             List<ProductDTO> lijst = new List<ProductDTO>();
             DataTable dt = new();
-            SqlDataAdapter da = new("SELECT Product.* FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE OrderId = '" + id + "'", connectionstring);
+            SqlDataAdapter da = new("SELECT Product.*, ProductOrder.AantalProducten FROM Product JOIN ProductOrder on ProductOrder.ProductID = Product.ID WHERE OrderId = '" + id + "'", connectionstring);
             da.Fill(dt);
             foreach (DataRow dr in dt.Rows)
             {
-                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["Stock"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"])));
+                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["Stock"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"]), Convert.ToInt32(dr["AantalProducten"])));
             }
             connection.Close();
             return lijst;

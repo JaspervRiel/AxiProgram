@@ -10,6 +10,7 @@ namespace BusnLogic
         public int Stock { get; set; }
         public int ProductGroup { get; set; }
         public int BranchID { get; set; }
+        public int AmountInOrder { get; set; }
 
         public Product(int id, string name, string location, int stock, int productGroup, int branchID)
         {
@@ -19,6 +20,17 @@ namespace BusnLogic
             Stock = stock;
             ProductGroup = productGroup;
             BranchID = branchID;
+        }
+
+        public Product(int id, string name, string location, int stock, int productGroup, int branchID, int amountInOrder)
+        {
+            Id = id;
+            Name = name;
+            Location = location;
+            Stock = stock;
+            ProductGroup = productGroup;
+            BranchID = branchID;
+            AmountInOrder = amountInOrder;
         }
 
         public Product()
@@ -33,10 +45,11 @@ namespace BusnLogic
             Stock = dto.Stock;
             ProductGroup = dto.ProductGroup;
             BranchID = dto.BranchID;
+            AmountInOrder = dto.AmountInOrder;
         }
         public ProductDTO GetDTO()
         {
-            ProductDTO dto = new ProductDTO(Id, Name, Location, Stock, ProductGroup, BranchID);
+            ProductDTO dto = new ProductDTO(Id, Name, Location, Stock, ProductGroup, BranchID, AmountInOrder);
             return dto;
         }
 

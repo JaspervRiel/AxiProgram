@@ -32,14 +32,31 @@ namespace Axi.Controllers
             return json;
         }
 
-        [HttpPatch]
-        [Route("api/[controller]Update")]
-        public IActionResult UpdateOrder(Order order)
+        [HttpDelete]
+        [Route("api/[controller]Delete")]
+        public IActionResult OrderDelete(int id)
         {
             try
             {
-                oc.Update(order);
-                return Ok(order);
+                oc.Delete(id);
+                return Ok(id);
+            }
+            catch
+            {
+                return Unauthorized();
+            }
+
+        }
+
+
+        [HttpPatch]
+        [Route("api/[controller]Update")]
+        public IActionResult UpdateOrder(int id, string DateTime)
+        {
+            try
+            {
+                oc.Update(id, DateTime);
+                return Ok(id);
             }
             catch
             {

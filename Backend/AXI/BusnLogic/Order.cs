@@ -11,11 +11,11 @@ namespace BusnLogic
     public class Order
     {
         public int Id { get; set; }
-        public string OrderDate { get; set; }
-        public string CompletedDate { get; set; }
+        public string? OrderDate { get; set; }
+        public string? CompletedDate { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
 
-        public Order(int id, string orderDate, string completedDate)
+        public Order(int id, string? orderDate, string? completedDate)
         {
             Id = id;
             OrderDate = orderDate;

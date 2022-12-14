@@ -37,3 +37,7 @@
 .tb-padding{
   padding: .5rem .5rem;
 }
+
+.tabelLine{
+  cursor: pointer;
+}
