@@ -12,8 +12,10 @@ function Order() {
   const date = `${current.getDate()}/${
     current.getMonth() + 1
   }/${current.getFullYear()}`;
+  const [Status, setStatus] = useState([]);
 
   function Active() {
+    setStatus("Actief");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/OrderActiveOrders")
       .then((response) => response.json())
@@ -25,6 +27,7 @@ function Order() {
   }, []);
 
   function completed() {
+    setStatus("Compleet");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/Ordercompletedorders")
       .then((response) => response.json())
@@ -76,6 +79,7 @@ function Order() {
             </Button>
           </div>
 
+          <h2>{Status}</h2>
           <table class="table">
             <tr class="header">
               <th>Id</th>
@@ -95,6 +99,7 @@ function Order() {
         </div>
         <div class="right">
           <div class="content">
+            
             <Button
               variant="outlined"
               color="success"
@@ -106,6 +111,7 @@ function Order() {
               Niet Compleet
             </Button>
           </div>
+          <h2>Geselecteerde order: {Id}</h2>
           <table class="table">
             <tr class="header">
               <th>ArtikelNaam</th>
