@@ -40,10 +40,10 @@ namespace BusnLogic
             return bestellings;
         }
 
-        public void Update(Bestelling b)
+        public void UpdateComplete(Bestelling b)
         {
             BestellingDTO dto = b.GetDTO();
-            container.Update(dto);
+            container.UpdateComplete(dto);
         }
 
         public List<Product> GetProductsFromBestelling(int orderid)

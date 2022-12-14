@@ -41,12 +41,12 @@ namespace Axi.Controllers
         }
 
         [HttpPatch]
-        [Route("api/[controller]update")]
-        public IActionResult UpdateBestelling(Bestelling bestelling)
+        [Route("api/[controller]Complete")]
+        public IActionResult UpdateBestellingComplete(Bestelling bestelling)
         {
             try
             {
-                bc.Update(bestelling);
+                bc.UpdateComplete(bestelling);
                 return Ok(bestelling);
             }
             catch

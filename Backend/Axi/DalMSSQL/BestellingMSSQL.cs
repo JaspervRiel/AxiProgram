@@ -70,12 +70,12 @@ namespace DalMSSQL
             return lijst;
         }
 
-        public void Update(BestellingDTO bestelling)
+        public void UpdateComplete(BestellingDTO bestelling)
         {
             SqlConnection connection = new SqlConnection(connectionstring);
             connection.Open();
             SqlCommand command;
-            string sql = "UPDATE [Order] SET " +
+            string sql = "UPDATE [Bestelling] SET " +
                 "Completed = 1" +
                 "WHERE ID = @ID";
 

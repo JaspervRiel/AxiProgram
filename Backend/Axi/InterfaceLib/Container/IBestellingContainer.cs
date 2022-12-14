@@ -11,7 +11,7 @@ namespace InterfaceLib.Container
     {
         public List<BestellingDTO> GetCompletedBestelling();
         public List<BestellingDTO> GetActiveBestelling();
-        public void Update(BestellingDTO bestelling);
+        public void UpdateComplete(BestellingDTO bestelling);
 
         public List<ProductDTO> GetProductsFromBestelling(int id);
     }

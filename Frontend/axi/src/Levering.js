@@ -8,7 +8,6 @@ function Levering() {
   const [levering, setLevering] = useState([]);
   const [Products, setProducts] = useState([]);
   const [Id, setID] = useState([]);
-  const [active, setactive] = useState([]);
   const [Name, setName] = useState([]);
   const [OrderDate, setOrderDate] = useState([]);
   const [Bestelling, setBestelling] = useState([]);
@@ -21,7 +20,6 @@ function Levering() {
   async function Active() {
     try {
       setBestelling("Actief");
-      setactive("1");
       fetch("https://localhost:7157/api/BestellingActive")
         .then((response) => response.json())
         .then((json) => setLevering(json));
@@ -32,30 +30,32 @@ function Levering() {
 
   async function completed() {
     setBestelling("Compleet");
-    setactive("2");
     fetch("https://localhost:7157/api/BestellingCompleted")
       .then((response) => response.json())
       .then((json) => setLevering(json));
   }
 
-  function ProductsFromLevering(Id, Name) {
+  function ProductsFromLevering(Id, Name, OrderDate) {
     setBestellingName(Name);
+    setID(Id);
+    setName(Name);
+    setOrderDate(OrderDate);
     fetch("https://localhost:7157/api/BestellingProducts?orderID=" + Id)
       .then((response) => response.json())
       .then((json) => setProducts(json));
   }
 
-  function LeveringUpdate(e) {
-    e.preventDefault();
-    const Levering = { Id, Name, OrderDate };
-    console.log(Levering);
-    fetch("https://localhost:7157/api/", {
+  function LeveringUpdateComplete(e) {
+    const levering = { Id, Name, OrderDate };
+    console.log(levering);
+    fetch("https://localhost:7157/api/BestellingComplete", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(Levering),
+      body: JSON.stringify(levering),
     })
       .then((res) => res.text()) // or res.json()
-      .then((res) => console.log(res));
+      .then((res) => console.log(res))
+      .then(Active());
   }
 
   return (
@@ -83,7 +83,9 @@ function Levering() {
                 <tr bgcolor="lightgrey" align="center">
                   <td>
                     <Button
-                      onClick={() => ProductsFromLevering(item.Id, item.Name)}
+                      onClick={() =>
+                        ProductsFromLevering(item.Id, item.Name, item.OrderDate)
+                      }
                     >
                       {item.Id}
                     </Button>
@@ -100,7 +102,7 @@ function Levering() {
             <Button
               variant="outlined"
               color="success"
-              onClick={() => LeveringUpdate()}
+              onClick={() => LeveringUpdateComplete()}
             >
               Compleet
             </Button>
