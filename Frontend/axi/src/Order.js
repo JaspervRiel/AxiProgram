@@ -49,6 +49,7 @@ function Order() {
       method: "PATCH",
       headers: { "Content-Type": "application/json" }
     })
+    window.location.reload(false);
   };
 
 
@@ -61,6 +62,7 @@ function Order() {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
+      window.location.reload(false);
   };
   
 
@@ -101,6 +103,7 @@ function Order() {
           <div class="content">
             
             <Button
+              type="submit"
               variant="outlined"
               color="success"
               onClick={() => {
@@ -109,19 +112,19 @@ function Order() {
                 );
 
                 let message = result
-                  ? OrderUpdate
+                  ? OrderUpdate()
                   : "Je klikte op annuleren.";
               }}
             >
               Compleet
             </Button>
-            <Button variant="outlined" color="error" onClick={() => {
+            <Button type="submit" variant="outlined" color="error" onClick={() => {
                 let result = window.confirm(
                   "Weet je zeker dat je de order wilt verwijderen?"
                 );
 
                 let message = result
-                  ? OrderUpdate
+                  ? OrderDelete()
                   : "Je klikte op annuleren.";
               }}>
               Niet Compleet

@@ -56,6 +56,7 @@ function Levering() {
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res))
       .then(Active());
+      window.location.reload(false);
   }
 
   return (
