@@ -103,11 +103,27 @@ function Order() {
             <Button
               variant="outlined"
               color="success"
-              onClick={OrderUpdate}
+              onClick={() => {
+                let result = window.confirm(
+                  "Weet je zeker dat hij compleet bent?"
+                );
+
+                let message = result
+                  ? OrderUpdate
+                  : "Je klikte op annuleren.";
+              }}
             >
               Compleet
             </Button>
-            <Button variant="outlined" color="error" onClick={() => OrderDelete()}>
+            <Button variant="outlined" color="error" onClick={() => {
+                let result = window.confirm(
+                  "Weet je zeker dat je de order wilt verwijderen?"
+                );
+
+                let message = result
+                  ? OrderUpdate
+                  : "Je klikte op annuleren.";
+              }}>
               Niet Compleet
             </Button>
           </div>
