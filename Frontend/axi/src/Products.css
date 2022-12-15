@@ -26,3 +26,15 @@
     color: #fa4242 !important;
     background-color: transparent !important;
 }
+select{
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    margin-left: 170vh !important;
+    right: 0;
+    width: 200px;
+    height: 40px;
+    background-color: #7B42FA;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+}
