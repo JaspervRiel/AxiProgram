@@ -45,7 +45,7 @@ function Levering() {
       .then((json) => setProducts(json));
   }
 
-  function LeveringUpdateComplete(e) {
+  function LeveringUpdateComplete() {
     const levering = { Id, Name, OrderDate };
     console.log(levering);
     fetch("https://localhost:7157/api/BestellingComplete", {

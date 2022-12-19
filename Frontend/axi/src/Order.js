@@ -14,7 +14,7 @@ function Order() {
   }/${current.getFullYear()}`;
   const [Status, setStatus] = useState([]);
 
-  function Active() {
+  async function Active() {
     setStatus("Actief");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/OrderActiveOrders")
@@ -26,7 +26,7 @@ function Order() {
     Active();
   }, []);
 
-  function completed() {
+  async function completed() {
     setStatus("Compleet");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/Ordercompletedorders")
