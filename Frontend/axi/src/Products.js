@@ -52,15 +52,17 @@ function Products() {
   return (
     <div>
       <Navbar />
-      <select onChange={GetAllProductsByProductGroup}>
-        {productgroups.map((item) => {
-          return (
-            <option onSelect={() => GetAllProductsByProductGroup(item.id)}>
-              {item.Id + " " + item.ProductGroupName}
-            </option>
-          );
-        })}
-      </select>
+      <div class="container">
+        <select onChange={GetAllProductsByProductGroup} class="pull-right">
+          {productgroups.map((item) => {
+            return (
+              <option onSelect={() => GetAllProductsByProductGroup(item.id)}>
+                {item.Id + " " + item.ProductGroupName}
+              </option>
+            );
+          })}
+        </select>
+      </div>
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
 
       <table class="table">
