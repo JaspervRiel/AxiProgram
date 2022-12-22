@@ -4,7 +4,6 @@
     padding: 10px;
     column-gap: 10px;
     row-gap: 10px;
-    height: 500px;
     text-align: center;
     font-weight: bold;
 }
@@ -27,4 +26,8 @@ a{
 
 .css-1d6wzja-MuiButton-startIcon>*:nth-of-type(1){
     font-size: 100px !important;
+}
+
+.center{
+    text-align: center;
 }

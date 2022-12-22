@@ -21,7 +21,6 @@ function GridButton() {
         variant="contained"
         startIcon={<InventoryIcon />}
       >
-        {" "}
         Producten
       </Button>
 
@@ -33,7 +32,6 @@ function GridButton() {
         variant="contained"
         startIcon={<TaskIcon />}
       >
-        {" "}
         Orders
       </Button>
 
@@ -45,7 +43,6 @@ function GridButton() {
         variant="contained"
         startIcon={<LocalShippingIcon />}
       >
-        {" "}
         Levering
       </Button>
 
@@ -57,7 +54,6 @@ function GridButton() {
         variant="contained"
         startIcon={<PlaceIcon />}
       >
-        {" "}
         Locaties
       </Button>
 
