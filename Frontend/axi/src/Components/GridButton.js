@@ -4,6 +4,7 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 import TaskIcon from "@mui/icons-material/Task";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import PlaceIcon from "@mui/icons-material/Place";
+import DoDisturbIcon from "@mui/icons-material/DoDisturb";
 
 <link
   rel="stylesheet"
@@ -45,6 +46,14 @@ function GridButton() {
       >
         Levering
       </Button>
+      <Button
+        href="/"
+        class="grid-item"
+        type="submit"
+        color="secondary"
+        variant="contained"
+        startIcon={<DoDisturbIcon />}
+      ></Button>
 
       <Button
         href="/Locaties"
@@ -63,14 +72,7 @@ function GridButton() {
         type="submit"
         color="secondary"
         variant="contained"
-      ></Button>
-
-      <Button
-        href="/"
-        class="grid-item"
-        type="submit"
-        color="secondary"
-        variant="contained"
+        startIcon={<DoDisturbIcon />}
       ></Button>
     </div>
   );
