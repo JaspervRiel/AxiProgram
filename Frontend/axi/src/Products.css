@@ -3,8 +3,8 @@
     background-color: #7B42FA;
 }
 .TableInhoud{
-    background-color: #4F4F61;
-    color: #FFFFFF;
+    background-color: #d3d3d3;
+    color: #000000;
 }
 
 .table {
@@ -25,4 +25,14 @@
 .ButtonDelete:hover{
     color: #fa4242 !important;
     background-color: transparent !important;
+}
+select{
+    display: flex;
+    margin: 15px 40px 15px 0px !important;
+    width: max-content;
+    height: 40px;
+    background-color: #7B42FA;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
 }

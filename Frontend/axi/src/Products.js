@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 function Products() {
   const [producten, setProducten] = useState([]);
   const [products, setProducts] = useState([]);
-  const bool = new Boolean(false);
+  const [group, setGroup] = useState([]);
+  const [searchbar, setSearchbar]= useState([]);
 
   fetch("https://localhost:7157/api/Product")
     .then((response) => response.json())
@@ -35,34 +36,41 @@ function Products() {
   const GetAllProductsByProductGroup = (e) => {
     const notfullid = e.target.value;
     const id = notfullid.slice(0, 2);
+    const groupname = notfullid.slice(2);
+    setGroup(groupname);
     fetch("https://localhost:7157/api/Product/productgroup?ID=" + id)
       .then((response) => response.json())
       .then((json) => setProducts(json));
   };
 
-  const BooleanTrue = () => {
-    this.setState({ bool: true });
-    console.log("button clicked");
+  const searchbarfilter = () => {
+    fetch("https://localhost:7157/api/Product/searchbar?Filter=" + searchbar)
+      .then((response) => response.json())
+      .then((json) => setProducts(json));
   };
 
   return (
     <div>
       <Navbar />
-      <select onChange={GetAllProductsByProductGroup}>
-        {productgroups.map((item) => {
-          return (
-            <option onSelect={() => GetAllProductsByProductGroup(item.id)}>
-              {item.Id + " " + item.ProductGroupName}
-            </option>
-          );
-        })}
-      </select>
+      <div class="container">
+        <select onChange={GetAllProductsByProductGroup} class="pull-right">
+          {productgroups.map((item) => {
+            return (
+              <option onSelect={() => GetAllProductsByProductGroup(item.id)}>
+                {item.Id + " " + item.ProductGroupName}
+              </option>
+            );
+          })}
+        </select>  
+        <TextField value={searchbar} onChange={(e) => setSearchbar(e.target.value)} id="outlined-basic" label="Filter" variant="outlined" />
+        <Button onClick={searchbarfilter}> Zoeken </Button>
+      </div>
+      
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
 
       <table class="table">
         <thead class="header">
           <tr>
-            <th scope="col"> ID</th>
             <th scope="col"> Productnaam</th>
             <th scope="col"> Locatie</th>
             <th scope="col"> Voorraad</th>
@@ -80,7 +88,6 @@ function Products() {
 
           return (
             <tr class="TableInhoud" align="center">
-              <td>{item.Id}</td>
               <td>{item.Name}</td>
               <td>{item.Location}</td>
               <td>{item.Stock}</td>
