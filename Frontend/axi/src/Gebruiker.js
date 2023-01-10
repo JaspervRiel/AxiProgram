@@ -1,21 +1,27 @@
 import React from "react";
 import "./Gebruiker.css";
 import Navbar from "./Components/Navbar";
-import {useState} from 'react'
+import { useState } from "react";
 
- const Gebruiker=()=> {
-  const [username, setusername] = useState("")
-  const [password, setPassword] = useState("")
-  const [id,setid] = useState("")
+const Gebruiker = () => {
+  const [username, setusername] = useState("");
+  const [password, setPassword] = useState("");
+  const [id, setid] = useState("");
 
-  const login=(e)=>{
-    e.preventDefault()
-    fetch('https://localhost:7157/api/CheckCredentials?username='+username+'&password='+password).then(()=>{
-      console.log("login")
-    }).then((response) => console.log(response))
+  const login = (e) => {
+    e.preventDefault();
+    fetch(
+      "https://localhost:7157/api/CheckCredentials?username=" +
+        username +
+        "&password=" +
+        password
+    )
+      .then(() => {
+        console.log("login");
+      })
+      .then((response) => console.log(response));
+  };
 
-  }
-  
   return (
     <div class="inlog_achtergrond">
       <Navbar />
@@ -30,7 +36,7 @@ import {useState} from 'react'
                 name="login_input"
                 placeholder="Enter Gebruikersnaam"
                 id="Gebruikersnaam"
-                onChange={(e)=>setusername(e.target.value)}
+                onChange={(e) => setusername(e.target.value)}
               />
             </div>
             <div class="login__field">
@@ -40,11 +46,14 @@ import {useState} from 'react'
                 name="login_input"
                 placeholder="Enter Wachtwoord"
                 id="Wachtwoord"
-                onChange={(e)=>setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <button class="button login__submit" onClick={login}>
               <span class="button__text">Inloggen</span>
+            </button>
+            <button class="button login__submit" href="Registreren">
+              <span class="button__text">Registreren?</span>
             </button>
           </form>
         </div>
@@ -54,6 +63,6 @@ import {useState} from 'react'
       </div>
     </div>
   );
-}
+};
 
-export default Gebruiker
+export default Gebruiker;

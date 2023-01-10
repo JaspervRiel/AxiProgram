@@ -71,6 +71,7 @@ const Registreren = () => {
                 name="Registreren_input"
                 placeholder="Enter telefoonnummer"
                 id="Telefoonnummer"
+                maxLength={10}
                 onChange={(e) => settelefoonnummer(e.target.value)}
               />
             </div>
