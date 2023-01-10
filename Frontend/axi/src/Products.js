@@ -5,12 +5,13 @@ import Navbar from "./Components/Navbar";
 import Button from "@mui/material/Button";
 import { json, Link, useNavigate } from "react-router-dom";
 import { Edit, FirstPageTwoTone } from "@mui/icons-material";
+import TextField from '@mui/material/TextField';
 
 function Products() {
   const [producten, setProducten] = useState([]);
   const [products, setProducts] = useState([]);
   const [group, setGroup] = useState([]);
-  const bool = new Boolean(false);
+  const [searchbar, setSearchbar]= useState([]);
 
   fetch("https://localhost:7157/api/Product")
     .then((response) => response.json())
@@ -44,9 +45,10 @@ function Products() {
       .then((json) => setProducts(json));
   };
 
-  const BooleanTrue = () => {
-    this.setState({ bool: true });
-    console.log("button clicked");
+  const searchbarfilter = () => {
+    fetch("https://localhost:7157/api/Product/searchbar?Filter=" + searchbar)
+      .then((response) => response.json())
+      .then((json) => setProducts(json));
   };
 
   return (
@@ -61,8 +63,11 @@ function Products() {
               </option>
             );
           })}
-        </select>
+        </select>  
+        <TextField value={searchbar} onChange={(e) => setSearchbar(e.target.value)} id="outlined-basic" label="Filter" variant="outlined" />
+        <Button onClick={searchbarfilter}> Zoeken </Button>
       </div>
+      
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
 
       <table class="table">
