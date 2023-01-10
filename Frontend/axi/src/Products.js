@@ -4,12 +4,13 @@ import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
 
 function Products() {
   const [producten, setProducten] = useState([]);
   const [products, setProducts] = useState([]);
   const [group, setGroup] = useState([]);
-  const [searchbar, setSearchbar]= useState([]);
+  const [searchbar, setSearchbar] = useState([]);
 
   fetch("https://localhost:7157/api/Product")
     .then((response) => response.json())
@@ -61,11 +62,17 @@ function Products() {
               </option>
             );
           })}
-        </select>  
-        <TextField value={searchbar} onChange={(e) => setSearchbar(e.target.value)} id="outlined-basic" label="Filter" variant="outlined" />
+        </select>
+        <TextField
+          value={searchbar}
+          onChange={(e) => setSearchbar(e.target.value)}
+          id="outlined-basic"
+          label="Filter"
+          variant="outlined"
+        />
         <Button onClick={searchbarfilter}> Zoeken </Button>
       </div>
-      
+
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
 
       <table class="table">
