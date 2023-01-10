@@ -9,9 +9,6 @@ function Order() {
   const [Products, setProducts] = useState([]);
   const [Id, setID] = useState([]);
   const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
   const [Status, setStatus] = useState([]);
 
   function Active() {
@@ -24,7 +21,7 @@ function Order() {
 
   useEffect(() => {
     Active();
-  }, []);
+  });
 
   function completed() {
     setStatus("Compleet");
@@ -38,19 +35,26 @@ function Order() {
     fetch("https://localhost:7157/api/OrderGetOrderProducts?orderID=" + Id)
       .then((response) => response.json())
       .then((json) => setProducts(json));
-      setID(Id)
+    setID(Id);
   }
 
   const OrderUpdate = (e) => {
     e.preventDefault();
-    const dateTime = `${current.getDate()}-${current.getMonth() + 1}-${current.getFullYear()}`
+    const dateTime = `${current.getDate()}-${
+      current.getMonth() + 1
+    }-${current.getFullYear()}`;
     console.log(dateTime);
-    fetch("https://localhost:7157/api/OrderUpdate?id=" + Id + "&DateTime=" + dateTime, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" }
-    })
+    fetch(
+      "https://localhost:7157/api/OrderUpdate?id=" +
+        Id +
+        "&DateTime=" +
+        dateTime,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   };
-
 
   const OrderDelete = (product) => {
     console.log(product);
@@ -62,7 +66,6 @@ function Order() {
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
   };
-  
 
   return (
     <div>
@@ -88,8 +91,13 @@ function Order() {
             </tr>
             {orders.map((item) => {
               return (
-                <tr bgcolor="lightgrey" align="center" className="tabelLine" onClick={() => ProductsFromOrder(item.Id)}>
-                  <td> {JSON.stringify(item.Id)}</td>
+                <tr
+                  bgcolor="lightgrey"
+                  align="center"
+                  className="tabelLine"
+                  onClick={() => ProductsFromOrder(item.Id)}
+                >
+                  <td> {item.Id}</td>
                   <td>{item.OrderDate}</td>
                   <td>{item.CompletedDate}</td>
                 </tr>
@@ -99,15 +107,14 @@ function Order() {
         </div>
         <div class="right">
           <div class="content">
-            
-            <Button
-              variant="outlined"
-              color="success"
-              onClick={OrderUpdate}
-            >
+            <Button variant="outlined" color="success" onClick={OrderUpdate}>
               Compleet
             </Button>
-            <Button variant="outlined" color="error" onClick={() => OrderDelete()}>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => OrderDelete()}
+            >
               Niet Compleet
             </Button>
           </div>
@@ -121,7 +128,7 @@ function Order() {
             {Products.map((item) => {
               return (
                 <tr bgcolor="lightgrey" align="center">
-                  <td class="tb-padding">{JSON.stringify(item.Name)}</td>
+                  <td class="tb-padding">{item.Name}</td>
                   <td>{item.Location}</td>
                   <td>{item.AmountInOrder}</td>
                 </tr>

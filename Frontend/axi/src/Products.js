@@ -3,8 +3,7 @@ import "./Products.css";
 import { useState } from "react";
 import Navbar from "./Components/Navbar";
 import Button from "@mui/material/Button";
-import { json, Link, useNavigate } from "react-router-dom";
-import { Edit, FirstPageTwoTone } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
   const [producten, setProducten] = useState([]);
@@ -19,8 +18,8 @@ function Products() {
 
   const [productgroups, setProductGroups] = useState([]);
   fetch("https://localhost:7157/api/ProductGroup")
-  .then((response) => response.json())
-  .then((json) => setProductGroups(json));
+    .then((response) => response.json())
+    .then((json) => setProductGroups(json));
 
   const Delete = (product) => {
     console.log(product);
@@ -32,32 +31,33 @@ function Products() {
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
   };
-  
-  const GetAllProductsByProductGroup= (e) => {
+
+  const GetAllProductsByProductGroup = (e) => {
     const notfullid = e.target.value;
-    const id = notfullid.slice(0,2);
+    const id = notfullid.slice(0, 2);
     fetch("https://localhost:7157/api/Product/productgroup?ID=" + id)
-    .then((response) => response.json())
-    .then((json) => setProducts(json));
-  }
+      .then((response) => response.json())
+      .then((json) => setProducts(json));
+  };
 
   const BooleanTrue = () => {
-    this.setState({ bool: true}) 
-    console.log("button clicked")
-  }
-
+    this.setState({ bool: true });
+    console.log("button clicked");
+  };
 
   return (
     <div>
       <Navbar />
-      <select  onChange={GetAllProductsByProductGroup}>
-      {productgroups.map((item) => {  
-              return (              
-              <option onSelect={() => GetAllProductsByProductGroup(item.id)}>{item.Id + " " + item.ProductGroupName}</option>   
-              );
-            })}
-            </select>  
-            {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
+      <select onChange={GetAllProductsByProductGroup}>
+        {productgroups.map((item) => {
+          return (
+            <option onSelect={() => GetAllProductsByProductGroup(item.id)}>
+              {item.Id + " " + item.ProductGroupName}
+            </option>
+          );
+        })}
+      </select>
+      {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
 
       <table class="table">
         <thead class="header">
@@ -66,8 +66,7 @@ function Products() {
             <th scope="col"> Productnaam</th>
             <th scope="col"> Locatie</th>
             <th scope="col"> Voorraad</th>
-            <th scope="col"> Productgroep   
-            </th>
+            <th scope="col"> Productgroep</th>
             <th scope="col"> FiliaalID</th>
             <th scope="col"> </th>
             <th scope="col"> </th>
@@ -81,14 +80,13 @@ function Products() {
 
           return (
             <tr class="TableInhoud" align="center">
-              <td>{JSON.stringify(item.Id)}</td>
-              <td>{JSON.stringify(item.Name)}</td>
-              <td>{JSON.stringify(item.Location)}</td>
-              <td>{JSON.stringify(item.Stock)}</td>
-              <td>{JSON.stringify(item.ProductGroup)}</td>
-              <td>{JSON.stringify(item.BranchID)}</td>
+              <td>{item.Id}</td>
+              <td>{item.Name}</td>
+              <td>{item.Location}</td>
+              <td>{item.Stock}</td>
+              <td>{item.ProductGroup}</td>
+              <td>{item.BranchID}</td>
               <td>
-                {" "}
                 <Button
                   className="Button"
                   onClick={() => {
