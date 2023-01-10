@@ -12,10 +12,13 @@ const FRMAddProduct = () => {
   const[stock, setStock]=useState('');
   const[productgroup, setProductGroup]=useState('')
   const[branchID, setBranchID]=useState('');
+  const isAdmin = false
 
   const handleClick=(e)=>{
     e.preventDefault()
-    const product={name, location, stock, productgroup, branchID}
+    CheckAdmin()
+    if(isAdmin==true){
+      const product={name, location, stock, productgroup, branchID}
     console.log(product)
     fetch('https://localhost:7157/api/Product',{
       method:"POST",
@@ -24,7 +27,21 @@ const FRMAddProduct = () => {
     }).then(()=>{
       console.log("New product Added")
     })
+    }
+    else{
+      alert("Je hebt geen Admin rechten")
+    }
+    
   }
+  
+   const CheckAdmin=()=>{
+    fetch('https://localhost:7157/api/'+sessionStorage.getItem('token'),{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+      }).then(response => response.text())
+      .then(result =>isAdmin = result )
+      console.log("test")
+    }
 
   return (
     <container>
