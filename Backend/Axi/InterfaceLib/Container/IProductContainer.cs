@@ -8,5 +8,6 @@
         public void Update(ProductDTO product);
         public ProductDTO GetProductById(int id);
         public List<ProductDTO> GetAllProductsByProductGroupID(int Id);
+        public List<ProductDTO> FilterOnProducts(string Filter);
     }
 }

@@ -113,5 +113,21 @@ namespace DalMSSQL
             connection.Close();
             return lijst;
         }
+
+        public List<ProductDTO> FilterOnProducts(string Filter)
+        {
+            SqlConnection connection = new SqlConnection(connectionstring);
+            connection.Open();
+            List<ProductDTO> lijst = new List<ProductDTO>();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT * FROM Product WHERE Name LIKE '%" + Filter + "%'", connectionstring);
+            da.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                lijst.Add(new ProductDTO(Convert.ToInt32(dr["ID"]), Convert.ToString(dr["Name"]), Convert.ToString(dr["Location"]), Convert.ToInt32(dr["Stock"]), Convert.ToInt32(dr["ProductGroup"]), Convert.ToInt32(dr["BranchID"])));
+            }
+            connection.Close();
+            return lijst;
+        }
     }
 }

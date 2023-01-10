@@ -56,5 +56,16 @@ namespace BusnLogic
             }
             return products;
         }
+
+        public List<Product> FilterOnProducts(string Filter)
+        {
+            List<ProductDTO> dtos = container.FilterOnProducts(Filter);
+            List<Product> products = new List<Product>();
+            foreach (ProductDTO dto in dtos)
+            {
+                products.Add(new Product(dto));
+            }
+            return products;
+        }
     }
 }

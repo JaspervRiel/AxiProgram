@@ -85,5 +85,14 @@ namespace Axi.Controllers
             var json = JsonSerializer.Serialize(products);
             return json;
         }
+
+        [HttpGet]
+        [Route("api/[controller]/searchbar")]
+        public string FilterOnProducts(string Filter)
+        {
+            List<Product> products = pc.FilterOnProducts(Filter);
+            var json = JsonSerializer.Serialize(products);
+            return json;
+        }
     }
 }
