@@ -108,7 +108,7 @@ function Order() {
               color="success"
               onClick={() => {
                 let result = window.confirm(
-                  "Weet je zeker dat hij compleet bent?"
+                  "Weet u zeker dat de order compleet is?"
                 );
 
                 let message = result
@@ -120,7 +120,7 @@ function Order() {
             </Button>
             <Button type="submit" variant="outlined" color="error" onClick={() => {
                 let result = window.confirm(
-                  "Weet je zeker dat je de order wilt verwijderen?"
+                  "Weet u zeker dat je de order wilt verwijderen?"
                 );
 
                 let message = result
