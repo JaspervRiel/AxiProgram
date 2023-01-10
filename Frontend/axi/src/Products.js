@@ -74,8 +74,8 @@ function Products() {
       </div>
 
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
-
-      <table class="table">
+      {products.length > 0?
+        <table class="table">
         <thead class="header">
           <tr>
             <th scope="col"> Productnaam</th>
@@ -132,6 +132,10 @@ function Products() {
           );
         })}
       </table>
+      :
+      <h2> Geen producten gevonden</h2>
+    }
+      
     </div>
   );
 }
