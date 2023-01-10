@@ -79,18 +79,31 @@ namespace Axi.Controllers
                 return Unauthorized();
             }
         }
-        [HttpGet]
+        [HttpPost]
         [Route("api/CheckCredentials")]
-        public int CheckCredentails(string username, string password)
+        public UserLogin CheckCredentails(UserLogin userlogin)
         {
             try
             {
 
-                return us.getByCredentials(username, password);
+                return us.getByCredentials(userlogin.name, userlogin.password);
             }
             catch
             {
                 throw new Exception();
+            }
+        }
+        [HttpPost]
+        [Route("api/checkadmin")]
+        public bool CheckAdmin(string token)
+        {
+            try
+            {
+                return us.CheckAdmin(token);
+            }
+            catch
+            {
+                return false;
             }
         }
     }

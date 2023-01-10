@@ -23,17 +23,48 @@ namespace DalMSSQL
             this.database = new Database(connectiestring);
         }
 
-        public int CheckCredentials(string username, string password)
+        public bool checkAdmin(string token)
         {
             SqlConnection connection = new SqlConnection(connectiestring);
             connection.Open();
-            string sql = "SELECT Id FROM Users WHERE Naam = '" + username + "' AND Password = '" +password+"'" ;
+            string sql = "SELECT Id FROM Users WHERE AdminToken = '" + token +"'";
             SqlCommand cmd = new SqlCommand(sql, connection);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
-            int id =reader.GetInt32("ID");
+            int id = 0;
+            id = reader.GetInt32("ID");
             connection.Close();
-            return id;
+            if(id == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public UserLoginDTO CheckCredentials(string username, string password)
+        {
+            SqlConnection connection = new SqlConnection(connectiestring);
+            connection.Open();
+            //string sql = "SELECT AdminToken FROM Users WHERE Naam = '" + username + "' AND Password = '" + password + "'";
+            //SqlCommand cmd = new SqlCommand(sql, connection);
+
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //reader.Read();
+            //string token = reader.GetString("Naam");
+            //connection.Close();
+            DataTable dt = new();
+            SqlDataAdapter da = new("SELECT AdminToken FROM Users WHERE Naam = '" + username + "' AND Password = '" + password + "'", connectiestring);
+            da.Fill(dt);
+            string token = null;
+            foreach (DataRow dr in dt.Rows)
+            {
+                token = Convert.ToString(dr["AdminToken"]);
+            }
+            return new UserLoginDTO(null, null, token);
+            
         }
 
         public void CreateUser(UserDTO userDTO)

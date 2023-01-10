@@ -69,10 +69,14 @@ namespace BusnLogic
             iUsers.DeleteUser(user.id);
         }
 
-        public int getByCredentials(string username, string password)
+        public UserLogin getByCredentials(string username, string password)
         {
             string hashedpassword = hashpassword(password);
-            return iUsers.CheckCredentials(username, hashedpassword);
+            return new UserLogin(iUsers.CheckCredentials(username, hashedpassword));
+        }
+        public bool CheckAdmin(string token)
+        {
+            return iUsers.checkAdmin(token);
         }
 
     }

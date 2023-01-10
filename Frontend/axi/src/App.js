@@ -10,6 +10,7 @@ import Order from "./Order";
 import Levering from "./Levering";
 import Locaties from "./Locaties";
 import Gebruiker from "./Gebruiker";
+import Testgebruiker from "./TestGebruiker";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Levering" element={<Levering />} />
           <Route path="/Locaties" element={<Locaties />} />
           <Route path="/Gebruiker" element={<Gebruiker />} />
+          <Route path="/testgebruiker" element={<Testgebruiker/>}/>
         </Routes>
       </BrowserRouter>
     </div>

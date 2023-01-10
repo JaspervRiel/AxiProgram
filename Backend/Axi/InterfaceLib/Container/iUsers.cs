@@ -18,6 +18,8 @@ namespace InterfaceLib.Container
         void CreateUser(UserDTO userDTO);
         void DeleteUser(int id);
 
-        int CheckCredentials(string username, string password);
+        UserLoginDTO CheckCredentials(string username, string password);
+
+        bool checkAdmin(string token);
     }
 }
