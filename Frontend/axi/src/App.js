@@ -12,6 +12,7 @@ import Locaties from "./Locaties";
 import Adminpanel from "./Adminpanel";
 import Gebruiker from "./Gebruiker";
 import Testgebruiker from "./TestGebruiker";
+import Registreren from "./Registreren";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
           <Route path="/Locaties" element={<Locaties />} />
           <Route path="/Adminpanel" element={<Adminpanel />} />
           <Route path="/Gebruiker" element={<Gebruiker />} />
-          <Route path="/testgebruiker" element={<Testgebruiker/>}/>
+          <Route path="/testgebruiker" element={<Testgebruiker />} />
+          <Route path="/Registreren" element={<Registreren />} />
         </Routes>
       </BrowserRouter>
     </div>
