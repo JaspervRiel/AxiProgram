@@ -42,7 +42,7 @@ function Order() {
   }
 
   const OrderUpdate = (e) => {
-    e.preventDefault();
+
     const dateTime = `${current.getDate()}-${
       current.getMonth() + 1
     }-${current.getFullYear()}`;
