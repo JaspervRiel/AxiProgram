@@ -119,6 +119,7 @@ function Products() {
                       let message = result
                         ? Delete(item)
                         : "You clicked the Cancel button";
+                        window.location.reload();
                     }}
                   >
                     Verwijderen

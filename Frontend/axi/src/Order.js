@@ -129,6 +129,7 @@ function Order() {
                 let message = result
                   ? OrderUpdate()
                   : "Je klikte op annuleren.";
+                  window.location.reload();
               }}
             >
               Compleet
@@ -145,6 +146,7 @@ function Order() {
                 let message = result
                   ? OrderDelete()
                   : "Je klikte op annuleren.";
+                  window.location.reload();
               }}
             >
               Niet Compleet
