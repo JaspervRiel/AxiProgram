@@ -74,68 +74,67 @@ function Products() {
       </div>
 
       {/*<Button onClick={BooleanTrue}>Klik hier om alle producten in te zien</Button> */}
-      {products.length > 0?
+      {products.length > 0 ? (
         <table class="table">
-        <thead class="header">
-          <tr>
-            <th scope="col"> Productnaam</th>
-            <th scope="col"> Locatie</th>
-            <th scope="col"> Voorraad</th>
-            <th scope="col"> Productgroep</th>
-            <th scope="col"> FiliaalID</th>
-            <th scope="col"> </th>
-            <th scope="col"> </th>
-          </tr>
-        </thead>
-
-        {products.map((item) => {
-          const Edit = () => {
-            navigate("/EditProduct", { state: item });
-          };
-
-          return (
-            <tr class="TableInhoud" align="center">
-              <td>{item.Name}</td>
-              <td>{item.Location}</td>
-              <td>{item.Stock}</td>
-              <td>{item.ProductGroup}</td>
-              <td>{item.BranchID}</td>
-              <td>
-                <Button
-                  className="Button"
-                  onClick={() => {
-                    Edit();
-                  }}
-                >
-                  aanpassen
-                </Button>
-              </td>
-              <td>
-                {" "}
-                <Button
-                  className="Button"
-                  color="error"
-                  onClick={() => {
-                    let result = window.confirm(
-                      "Are you sure you want to delete?"
-                    );
-
-                    let message = result
-                      ? Delete(item)
-                      : "You clicked the Cancel button";
-                  }}
-                >
-                  Verwijderen
-                </Button>
-              </td>
+          <thead class="header">
+            <tr>
+              <th scope="col"> Productnaam</th>
+              <th scope="col"> Locatie</th>
+              <th scope="col"> Voorraad</th>
+              <th scope="col"> Productgroep</th>
+              <th scope="col"> FiliaalID</th>
+              <th scope="col"> </th>
+              <th scope="col"> </th>
             </tr>
-          );
-        })}
-      </table>
-      :
-      <h2> Geen producten gevonden</h2>
-    }
-      
+          </thead>
+
+          {products.map((item) => {
+            const Edit = () => {
+              navigate("/EditProduct", { state: item });
+            };
+
+            return (
+              <tr class="TableInhoud" align="center">
+                <td>{item.Name}</td>
+                <td>{item.Location}</td>
+                <td>{item.Stock}</td>
+                <td>{item.ProductGroup}</td>
+                <td>{item.BranchID}</td>
+                <td>
+                  <Button
+                    className="Button"
+                    onClick={() => {
+                      Edit();
+                    }}
+                  >
+                    aanpassen
+                  </Button>
+                </td>
+                <td>
+                  {" "}
+                  <Button
+                    className="Button"
+                    color="error"
+                    onClick={() => {
+                      let result = window.confirm(
+                        "Are you sure you want to delete?"
+                      );
+
+                      let message = result
+                        ? Delete(item)
+                        : "You clicked the Cancel button";
+                    }}
+                  >
+                    Verwijderen
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
+        </table>
+      ) : (
+        <h2 class="center"> Geen producten gevonden</h2>
+      )}
     </div>
   );
 }

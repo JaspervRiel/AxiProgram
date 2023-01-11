@@ -9,6 +9,9 @@ function Order() {
   const [Products, setProducts] = useState([]);
   const [Id, setID] = useState([]);
   const current = new Date();
+  const date = `${current.getDate()}/${
+    current.getMonth() + 1
+  }/${current.getFullYear()}`;
   const [Status, setStatus] = useState([]);
 
   function Active() {
@@ -21,7 +24,7 @@ function Order() {
 
   useEffect(() => {
     Active();
-  });
+  }, []);
 
   function completed() {
     setStatus("Complete orders");
@@ -44,11 +47,16 @@ function Order() {
       current.getMonth() + 1
     }-${current.getFullYear()}`;
     console.log(dateTime);
-    fetch("https://localhost:7157/api/OrderUpdate?id=" + Id + "&DateTime=" + dateTime, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" }
-    })
-    window.location.reload(false);
+    fetch(
+      "https://localhost:7157/api/OrderUpdate?id=" +
+        Id +
+        "&DateTime=" +
+        dateTime,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   };
 
   const OrderDelete = (product) => {
@@ -60,13 +68,10 @@ function Order() {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
-      window.location.reload(false);
   };
-
 
   return (
     <div>
-      {" "}
       <Navbar />
       <div class="container">
         <div class="left">
@@ -78,40 +83,40 @@ function Order() {
               Oude Orders
             </Button>
           </div>
-          {orders.length > 0? 
-          <div>
-          <h2>{Status}</h2>
-          <table class="table">
-            <tr class="header">
-              <th>Id</th>
-              <th>OrderDatum</th>
-              <th>OrderVoltooid</th>
-            </tr>
-            {orders.map((item) => {
-              return (
-                <tr
-                  bgcolor="lightgrey"
-                  align="center"
-                  className="tabelLine"
-                  onClick={() => ProductsFromOrder(item.Id)}
-                >
-                  <td> {item.Id}</td>
-                  <td>{item.OrderDate}</td>
-                  <td>{item.CompletedDate}</td>
+          {orders.length > 0 ? (
+            <div>
+              <h2>{Status}</h2>
+              <table class="table">
+                <tr class="header">
+                  <th>Id</th>
+                  <th>OrderDatum</th>
+                  <th>OrderVoltooid</th>
                 </tr>
-              );
-            })}
-          </table>
-          </div> : 
-          <div class="center">
-          <h2>Momenteel geen {Status}</h2>
-          </div>}
+                {orders.map((item) => {
+                  return (
+                    <tr
+                      bgcolor="lightgrey"
+                      align="center"
+                      className="tabelLine"
+                      onClick={() => ProductsFromOrder(item.Id)}
+                    >
+                      <td> {JSON.stringify(item.Id)}</td>
+                      <td>{item.OrderDate}</td>
+                      <td>{item.CompletedDate}</td>
+                    </tr>
+                  );
+                })}
+              </table>
+            </div>
+          ) : (
+            <div class="center">
+              <h2>Momenteel geen {Status}</h2>
+            </div>
+          )}
         </div>
+
         <div class="right">
           <div class="content">
-            <Button variant="outlined" color="success" onClick={OrderUpdate}>
-              Compleet
-            </Button>
             <Button
               type="submit"
               variant="outlined"
@@ -128,44 +133,50 @@ function Order() {
             >
               Compleet
             </Button>
-            <Button type="submit" variant="outlined" color="error" onClick={() => {
+
+            <Button
+              type="submit"
+              variant="outlined"
+              color="error"
+              onClick={() => {
                 let result = window.confirm(
                   "Weet u zeker dat je de order wilt verwijderen?"
                 );
-
                 let message = result
                   ? OrderDelete()
                   : "Je klikte op annuleren.";
-              }}>
+              }}
+            >
               Niet Compleet
             </Button>
           </div>
-          {Products.length > 0? 
-                    <div>
-                    <h2>Geselecteerde order: {Id}</h2>
-                    <table class="table">
-                      <tr class="header">
-                        <th>ArtikelNaam</th>
-                        <th>Locatie</th>
-                        <th>Aantal</th>
-                      </tr>
-                      {Products.map((item) => {
-                        return (
-                          <tr bgcolor="lightgrey" align="center">
-                            <td class="tb-padding">{JSON.stringify(item.Name)}</td>
-                            <td>{item.Location}</td>
-                            <td>{item.AmountInOrder}</td>
-                          </tr>
-                        );
-                      })}
-                    </table>
-                    </div>
-          :
-          <h2>U heeft momenteel geen order gekozen</h2>
-          }
+          {Products.length > 0 ? (
+            <div>
+              <h2>Geselecteerde order: {Id}</h2>
+              <table class="table">
+                <tr class="header">
+                  <th>ArtikelNaam</th>
+                  <th>Locatie</th>
+                  <th>Aantal</th>
+                </tr>
+                {Products.map((item) => {
+                  return (
+                    <tr bgcolor="lightgrey" align="center">
+                      <td class="tb-padding">{item.Name}</td>
+                      <td>{item.Location}</td>
+                      <td>{item.AmountInOrder}</td>
+                    </tr>
+                  );
+                })}
+              </table>
+            </div>
+          ) : (
+            <h2>U heeft momenteel geen order gekozen</h2>
+          )}
         </div>
       </div>
     </div>
   );
 }
+
 export default Order;
