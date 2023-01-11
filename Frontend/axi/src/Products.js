@@ -12,10 +12,6 @@ function Products() {
   const [group, setGroup] = useState([]);
   const [searchbar, setSearchbar] = useState([]);
 
-  fetch("https://localhost:7157/api/Product")
-    .then((response) => response.json())
-    .then((json) => setProducten(json));
-
   const navigate = useNavigate();
 
   const [productgroups, setProductGroups] = useState([]);
