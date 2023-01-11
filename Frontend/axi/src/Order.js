@@ -44,16 +44,11 @@ function Order() {
       current.getMonth() + 1
     }-${current.getFullYear()}`;
     console.log(dateTime);
-    fetch(
-      "https://localhost:7157/api/OrderUpdate?id=" +
-        Id +
-        "&DateTime=" +
-        dateTime,
-      {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    fetch("https://localhost:7157/api/OrderUpdate?id=" + Id + "&DateTime=" + dateTime, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" }
+    })
+    window.location.reload(false);
   };
 
   const OrderDelete = (product) => {
@@ -65,6 +60,7 @@ function Order() {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
+      window.location.reload(false);
   };
 
 
@@ -117,10 +113,30 @@ function Order() {
               Compleet
             </Button>
             <Button
+              type="submit"
               variant="outlined"
-              color="error"
-              onClick={() => OrderDelete()}
+              color="success"
+              onClick={() => {
+                let result = window.confirm(
+                  "Weet u zeker dat de order compleet is?"
+                );
+
+                let message = result
+                  ? OrderUpdate()
+                  : "Je klikte op annuleren.";
+              }}
             >
+              Compleet
+            </Button>
+            <Button type="submit" variant="outlined" color="error" onClick={() => {
+                let result = window.confirm(
+                  "Weet u zeker dat je de order wilt verwijderen?"
+                );
+
+                let message = result
+                  ? OrderDelete()
+                  : "Je klikte op annuleren.";
+              }}>
               Niet Compleet
             </Button>
           </div>
