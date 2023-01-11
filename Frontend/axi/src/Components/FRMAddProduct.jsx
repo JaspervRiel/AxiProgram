@@ -12,13 +12,11 @@ const FRMAddProduct = () => {
   const[stock, setStock]=useState('');
   const[productgroup, setProductGroup]=useState('')
   const[branchID, setBranchID]=useState('');
-  const isAdmin = false
+  var isAdmin;
 
-  const handleClick=(e)=>{
-    e.preventDefault()
-    CheckAdmin()
-    if(isAdmin==true){
-      const product={name, location, stock, productgroup, branchID}
+  const AddNewProduct=()=>{
+    if(isAdmin==='true'){
+    const product={name, location, stock, productgroup, branchID}
     console.log(product)
     fetch('https://localhost:7157/api/Product',{
       method:"POST",
@@ -35,12 +33,17 @@ const FRMAddProduct = () => {
   }
   
    const CheckAdmin=()=>{
-    fetch('https://localhost:7157/api/'+sessionStorage.getItem('token'),{
+    fetch('https://localhost:7157/api/checkadmin?token='+sessionStorage.getItem('token'),{
         method:"POST",
         headers:{"Content-Type":"application/json"},
       }).then(response => response.text())
-      .then(result =>isAdmin = result )
-      console.log("test")
+      .then(result => isAdmin = result)
+    }
+
+    const handleClick=()=>{
+      CheckAdmin()
+      setTimeout(AddNewProduct,5000)
+
     }
 
   return (
