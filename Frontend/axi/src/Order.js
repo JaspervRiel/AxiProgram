@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import Navbar from "./Components/Navbar";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 function Order() {
   const [orders, setOrders] = useState([]);
@@ -146,6 +147,7 @@ function Order() {
                 let message = result
                   ? OrderDelete()
                   : "Je klikte op annuleren.";
+                  wait(1000);
                   window.location.reload();
               }}
             >
