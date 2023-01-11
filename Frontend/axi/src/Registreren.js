@@ -5,26 +5,26 @@ import { useState } from "react";
 import { Email } from "@mui/icons-material";
 
 const Registreren = () => {
-  const [username, setusername] = useState("");
+  const [name, setusername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
-  const [telefoonnummer, settelefoonnummer] = useState("");
+  const [phonenumber, settelefoonnummer] = useState("");
   const [id, setid] = useState("");
+  const [isManager] = useState("false");
 
   const Registreren = (e) => {
+    console.log("test correct");
     e.preventDefault();
-    fetch(
-      "https://localhost:7157/api/CheckCredentials?username=" +
-        username +
-        "&password=" +
-        password +
-        email +
-        telefoonnummer
-    )
-      .then(() => {
-        console.log("Registreren_");
-      })
-      .then((response) => console.log(response));
+    const id = 0;
+    const user = { id, name, password, email, phonenumber, isManager: false };
+    console.log(user);
+    fetch("https://localhost:7157/api/Users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    }).then(() => {
+      console.log("New user Added");
+    });
   };
 
   return (

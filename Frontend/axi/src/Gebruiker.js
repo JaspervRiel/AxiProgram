@@ -49,12 +49,12 @@ const Gebruiker = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button class="button login__submit" onClick={login}>
+            <a class="button login__submit" onClick={login}>
               <span class="button__text">Inloggen</span>
-            </button>
-            <button class="button login__submit" href="Registreren">
+            </a>
+            <a class="button login__submit" href="Registreren">
               <span class="button__text">Registreren?</span>
-            </button>
+            </a>
           </form>
         </div>
         <div class="screen__background">
