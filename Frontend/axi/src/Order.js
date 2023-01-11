@@ -12,7 +12,7 @@ function Order() {
   const [Status, setStatus] = useState([]);
 
   function Active() {
-    setStatus("Actief");
+    setStatus("Actieve orders");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/OrderActiveOrders")
       .then((response) => response.json())
@@ -24,7 +24,7 @@ function Order() {
   });
 
   function completed() {
-    setStatus("Compleet");
+    setStatus("Complete orders");
     ProductsFromOrder(0);
     fetch("https://localhost:7157/api/Ordercompletedorders")
       .then((response) => response.json())
@@ -67,6 +67,7 @@ function Order() {
       .then((res) => console.log(res));
   };
 
+
   return (
     <div>
       {" "}
@@ -81,7 +82,8 @@ function Order() {
               Oude Orders
             </Button>
           </div>
-
+          {orders.length > 0? 
+          <div>
           <h2>{Status}</h2>
           <table class="table">
             <tr class="header">
@@ -104,6 +106,10 @@ function Order() {
               );
             })}
           </table>
+          </div> : 
+          <div class="center">
+          <h2>Momenteel geen {Status}</h2>
+          </div>}
         </div>
         <div class="right">
           <div class="content">
@@ -118,23 +124,29 @@ function Order() {
               Niet Compleet
             </Button>
           </div>
-          <h2>Geselecteerde order: {Id}</h2>
-          <table class="table">
-            <tr class="header">
-              <th>ArtikelNaam</th>
-              <th>Locatie</th>
-              <th>Aantal</th>
-            </tr>
-            {Products.map((item) => {
-              return (
-                <tr bgcolor="lightgrey" align="center">
-                  <td class="tb-padding">{item.Name}</td>
-                  <td>{item.Location}</td>
-                  <td>{item.AmountInOrder}</td>
-                </tr>
-              );
-            })}
-          </table>
+          {Products.length > 0? 
+                    <div>
+                    <h2>Geselecteerde order: {Id}</h2>
+                    <table class="table">
+                      <tr class="header">
+                        <th>ArtikelNaam</th>
+                        <th>Locatie</th>
+                        <th>Aantal</th>
+                      </tr>
+                      {Products.map((item) => {
+                        return (
+                          <tr bgcolor="lightgrey" align="center">
+                            <td class="tb-padding">{JSON.stringify(item.Name)}</td>
+                            <td>{item.Location}</td>
+                            <td>{item.AmountInOrder}</td>
+                          </tr>
+                        );
+                      })}
+                    </table>
+                    </div>
+          :
+          <h2>U heeft momenteel geen order gekozen</h2>
+          }
         </div>
       </div>
     </div>
