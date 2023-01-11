@@ -8,24 +8,33 @@ const Gebruiker = () => {
   const [password, setPassword] = useState("");
   const [id, setid] = useState("");
 
-  const login = (e) => {
-    e.preventDefault();
-    fetch(
-      "https://localhost:7157/api/CheckCredentials?username=" +
-        username +
-        "&password=" +
-        password
-    )
-      .then(() => {
-        console.log("login");
-      })
-      .then((response) => console.log(response));
-  };
+  const redirect=()=>{
+    window.location.href = "http://localhost:3000"
+  }
 
+  const login=()=>{
+    var user 
+    var raw = JSON.stringify({
+      "name": username,
+      "password": password,
+      "token": 'null'
+    });
+    
+    fetch('https://localhost:7157/api/CheckCredentials',{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:raw
+    }).then((response) => response.json())
+    .then((json) => sessionStorage.setItem("token",json.token))
+    .then(sessionStorage.setItem("loggedIn",true)).then(console.log(sessionStorage.getItem("token")));
+    setTimeout(redirect,5000)
+  
+
+  }
+  
   return (
     <div class="inlog_achtergrond">
       <Navbar />
-      <p>{id}</p>
       <div class="screen">
         <div class="screen__content">
           <form class="login">
@@ -49,7 +58,7 @@ const Gebruiker = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <a class="button login__submit" onClick={login}>
+            <button class="button login__submit" onClick={login} type="button">
               <span class="button__text">Inloggen</span>
             </a>
             <a class="button login__submit" href="Registreren">

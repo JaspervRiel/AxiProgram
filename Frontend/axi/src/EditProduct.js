@@ -19,9 +19,10 @@ function ComponentB() {
     uselocation.state.ProductGroup
   );
   const [branchID, setBranchID] = useState(uselocation.state.BranchID);
-
-  const Update = (e) => {
-    e.preventDefault();
+  var isAdmin = null;
+  const Update = () => {
+    console.log(isAdmin)
+    if(isAdmin=='true'){
     const product = { id, name, location, stock, productgroup, branchID };
     console.log(product);
     fetch("https://localhost:7157/api/Product", {
@@ -31,7 +32,22 @@ function ComponentB() {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => console.log(res));
-  };
+  }
+  else {
+    alert("je hebt niet voldoende rechten")
+  }
+}
+  const CheckAdmin=()=>{
+    fetch('https://localhost:7157/api/checkadmin?token='+sessionStorage.getItem('token'),{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+      }).then(response => response.text())
+      .then(result => isAdmin = result)
+    }
+    const handleClick=()=>{
+      CheckAdmin()
+      setTimeout(Update,5000)
+    }
   return (
     // <div>{uselocation.state.Id}</div>
     <container>
@@ -95,7 +111,7 @@ function ComponentB() {
             onChange={(e) => setBranchID(e.target.value)}
           />
 
-          <Button class="AddButton" variant="contained" onClick={Update}>
+          <Button class="AddButton" variant="contained" onClick={handleClick}>
             Sla gegevens op
           </Button>
         </Box>
